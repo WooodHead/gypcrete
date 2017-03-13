@@ -25,7 +25,7 @@
     "lint": "eslint ./ && echo \"eslint: no lint errors\"",
     "test": "jest ./src --config=config/jest.config.json",
     "clean": "rm -rf ./dist ./lib ./es5 ./deploy",
-    "deploy": "npm run clean && npm run build && sh deploy.sh"
+    "deploy": "npm run clean && npm run build && sh -xe deploy.sh"
   },
   "peerDependencies": {
     "react": "^15.4.2",
