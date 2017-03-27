@@ -23,22 +23,6 @@ var _createClass3 = _interopRequireDefault(_createClass2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// -------------------------------------
-//   icBEM Helper
-//   @ref https://github.com/14islands/bem-helper-js
-//
-//   Usage:
-//   const bem = icBEM('ic-list');
-//   const bem2 = bem.element('item');
-//   const bem3 = bem2.modifier('highlight');
-//
-//   bem.toString();   // => 'ic-list'
-//   bem2.toString();  // => 'ic-list__item'
-//   bem3.toString();  // => 'ic-list__item ic-list__item--highlight'
-// -------------------------------------
-
-/* eslint-disable no-underscore-dangle */
-
 var ELEMENT_SEPARATOR = '__';
 var MODIFIER_SEPARATOR = '--';
 
@@ -70,13 +54,6 @@ var BEMFactory = exports.BEMFactory = function () {
         return this;
     }
 
-    /**
-     * Set element scope
-      * @param {String}
-     * @return {BEMFactory}
-     */
-
-
     (0, _createClass3.default)(BEMFactory, [{
         key: 'element',
         value: function element(elementIdentifier) {
@@ -87,13 +64,6 @@ var BEMFactory = exports.BEMFactory = function () {
             }
             return this;
         }
-
-        /**
-         * Add BEM modifier
-          * @param {String}
-         * @return {BEMFactory}
-         */
-
     }, {
         key: 'modifier',
         value: function modifier(modifierIdentifier) {
@@ -106,13 +76,6 @@ var BEMFactory = exports.BEMFactory = function () {
             }
             return this;
         }
-
-        /**
-         * Add other non-BEM classname to the mix
-          * @param {String}
-         * @return {BEMFactory}
-         */
-
     }, {
         key: 'add',
         value: function add(className) {
@@ -123,13 +86,6 @@ var BEMFactory = exports.BEMFactory = function () {
             }
             return this;
         }
-
-        /**
-         * Render BEM chain as full class name string
-         *
-         * @return {String}
-         */
-
     }, {
         key: 'toString',
         value: function toString() {
@@ -147,13 +103,6 @@ var BEMFactory = exports.BEMFactory = function () {
 
             return classes.join(' ');
         }
-
-        /**
-         * Export internal properties to a new Hash
-         *
-         * @return {Hash}
-         */
-
     }, {
         key: 'toHash',
         value: function toHash() {
@@ -167,9 +116,6 @@ var BEMFactory = exports.BEMFactory = function () {
     }]);
     return BEMFactory;
 }();
-
-// Creates BEM chain based on context type
-
 
 function icBEM(blockName) {
     if (typeof blockName === 'string') {

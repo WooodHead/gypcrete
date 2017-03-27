@@ -27,14 +27,12 @@ var _StatusIcon2 = _interopRequireDefault(_StatusIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Status context types
 var statusPropTypes = exports.statusPropTypes = {
     status: _react.PropTypes.oneOf((0, _values2.default)(_StatusIcon.STATUS_CODE)),
     statusOptions: _react.PropTypes.object,
     errorMsg: _react.PropTypes.string
 };
 
-// prop types for what's going to set on wrapped component
 var withStatusPropTypes = exports.withStatusPropTypes = {
     statusIcon: _react.PropTypes.node,
     errorMsg: _react.PropTypes.string

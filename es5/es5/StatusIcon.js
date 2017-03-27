@@ -69,7 +69,6 @@ var StatusIcon = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        // Ref to `setTimout` for hiding status icon
         var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = StatusIcon.__proto__ || (0, _getPrototypeOf2.default)(StatusIcon)).call.apply(_ref, [this].concat(args)));
 
         _this.autoHideTimeout = null;
@@ -103,20 +102,6 @@ var StatusIcon = function (_PureComponent) {
         value: function componentWillUnmount() {
             clearTimeout(this.hideIconTimeout);
         }
-
-        /**
-         * Auto hides status icon after being SUCCESS for 2 secs,
-         * or shows icon when component leaves SUCCESS state.
-         *
-         * Scenario:
-         *   - LOADING -> SUCCESS -> (2s) ==> hide
-         *   - LOADING -> SUCCESS -> (1s) -> LOADING|ERROR|null ==> clear timeout
-         *   - LOADING -> SUCCESS -> (1s) -> (render) -> SUCCESS ==> keep timeout
-         *   - SUCCESS -> LOADING|ERROR|null ==> clear timeout & show icon
-         *
-         * @param {String} status - current or next 'status'
-         */
-
     }, {
         key: 'autoToggleStatusIcon',
         value: function autoToggleStatusIcon() {
@@ -124,12 +109,10 @@ var StatusIcon = function (_PureComponent) {
 
             var status = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props.status;
 
-            // Ignore if autohide === false
             if (!this.props.autohide) {
                 return;
             }
 
-            // LOADING|ERROR|null -> SUCCESS
             if (status === SUCCESS) {
                 this.hideIconTimeout = setTimeout(function () {
                     _this2.setState({ hideIcon: true });
@@ -139,7 +122,6 @@ var StatusIcon = function (_PureComponent) {
                 return;
             }
 
-            // SUCCESS -> LOADING|ERROR|null
             clearTimeout(this.hideIconTimeout);
             this.setState({ hideIcon: false });
         }

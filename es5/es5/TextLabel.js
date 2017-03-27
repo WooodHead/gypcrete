@@ -42,6 +42,5 @@ function TextLabel(_ref) {
     );
 }
 
-// export for tests
 exports.PureTextLabel = TextLabel;
 exports.default = (0, _rowComp2.default)()(TextLabel);

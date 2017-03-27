@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.FlexCell = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = undefined;
+exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.FlexCell = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+
+var _BasicRow = require('./BasicRow');
+
+var _BasicRow2 = _interopRequireDefault(_BasicRow);
 
 var _Icon = require('./Icon');
 
@@ -39,10 +43,7 @@ var _TextLabel2 = _interopRequireDefault(_TextLabel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Layout helpers
-
-
-// Visual elements
+exports.BasicRow = _BasicRow2.default;
 exports.Icon = _Icon2.default;
 exports.StatusIcon = _StatusIcon2.default;
 exports.Tag = _Tag2.default;
@@ -51,5 +52,3 @@ exports.FlexCell = _FlexCell2.default;
 exports.RowCompBody = _RowCompBody2.default;
 exports.TextEllipsis = _TextEllipsis2.default;
 exports.TextLabel = _TextLabel2.default;
-
-// Row components

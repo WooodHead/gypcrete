@@ -75,62 +75,22 @@ var _StatusIcon = require('../StatusIcon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-row-comp'; /**
-                                                              * rowComp() HOC mixin
-                                                              * ===================
-                                                              * A Component that goes into a row container is a **Row Component**,
-                                                              * and normally should be wrapped with the `rowComp()` mixin to share
-                                                              * common appearance and behaviors.
-                                                              *
-                                                              * By default, `rowComp()` renders a set of label contents into the wrapped
-                                                              * Component, including an <Icon> and a <Text>.
-                                                              *
-                                                              * Usage
-                                                              * -----
-                                                              * A **Row Component** can be used in 2 ways:
-                                                              *
-                                                              * ### Use pre-configured layout by passing everything via props
-                                                              * <TextLabel
-                                                              *     basic="Basic Text"
-                                                              *     tag="Tag"
-                                                              *     aside="Aside Text"
-                                                              *     align="center"
-                                                              *     status"loading" />
-                                                              *
-                                                              * ### Customize layout via children
-                                                              * <TextLabel status="error">
-                                                              *     <Icon type="star" />
-                                                              *     <Text basic="Announcements" />
-                                                              *     <Icon type="star" />
-                                                              * </TextLabel>
-                                                              *
-                                                              */
-
+var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-row-comp';
 var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 var ROW_COMP_BODY = exports.ROW_COMP_BODY = ROOT_BEM.element('body');
 
-// State class names
 var CLASS_ACTIVE = (0, _icState2.default)('active');
 var CLASS_HIGHLIGHT = (0, _icState2.default)('highlight');
 var CLASS_ERROR = (0, _icState2.default)('error');
 var CLASS_DISABLED = (0, _icState2.default)('disabled');
 var CLASS_UNTOUCHABLE = (0, _icState2.default)('untouchable');
 
-// Alignments
 var LEFT = 'left';
 var CENTER = 'center';
 var RIGHT = 'right';
 var REVERSE = 'reverse';
 var ROW_COMP_ALIGN = exports.ROW_COMP_ALIGN = { LEFT: LEFT, CENTER: CENTER, RIGHT: RIGHT, REVERSE: REVERSE };
 
-/**
- * Determine alignment for pre-configured <Text> based on
- * <RowComp> align and icon existence.
- *
- * @param  {String} compAlign
- * @param  {Bool}   hasIcon
- * @return {String} textAlign
- */
 function determineTextAlign(compAlign, hasIcon) {
     switch (compAlign) {
         case RIGHT:
@@ -139,7 +99,6 @@ function determineTextAlign(compAlign, hasIcon) {
         case CENTER:
             if (!hasIcon) return CENTER;
         default:
-            // eslint-disable-line no-fallthrough
             return LEFT;
     }
 }
@@ -231,14 +190,12 @@ var rowComp = function rowComp() {
 
         RowComp.displayName = 'rowComp(' + componentName + ')';
         RowComp.propTypes = (0, _extends3.default)({
-            // Text label props
             align: _react.PropTypes.oneOf((0, _values2.default)(ROW_COMP_ALIGN)),
             icon: _react.PropTypes.string,
             basic: _react.PropTypes.node,
             aside: _react.PropTypes.node,
             tag: _react.PropTypes.node,
 
-            // State props
             active: _react.PropTypes.bool,
             highlight: _react.PropTypes.bool,
             disabled: _react.PropTypes.bool

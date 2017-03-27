@@ -278,6 +278,54 @@ html {
 body {
   font-size: 1.33333rem;
 }
+.ic-flex-cell {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+.ic-tag {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  line-height: 1em;
+  padding: 0.16667rem 0.33333rem;
+  border: 0.08333rem solid transparent;
+  border-radius: 0.5rem;
+  background-clip: padding-box;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.ic-state-editable .ic-tag {
+  background-color: #3399ff;
+}
+
+.ic-state-error .ic-tag {
+  background-color: #e63917;
+}
+
+.ic-state-highlight .ic-tag {
+  background-color: white;
+  color: #3399ff;
+}
+
+.ic-state-highlight .ic-state-error .ic-tag {
+  color: #e63917;
+}
+
+[disabled] .ic-tag,
+.ic-state-disabled .ic-tag {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.ic-text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 @charset "UTF-8";
 @font-face {
   font-family: "ic-icon";
@@ -555,40 +603,6 @@ body {
   top: 0;
   right: 0;
 }
-.ic-tag {
-  background-color: black;
-  color: white;
-  font-size: 1rem;
-  line-height: 1em;
-  padding: 0.16667rem 0.33333rem;
-  border: 0.08333rem solid transparent;
-  border-radius: 0.5rem;
-  background-clip: padding-box;
-  display: inline-block;
-  vertical-align: text-top;
-}
-
-.ic-state-editable .ic-tag {
-  background-color: #3399ff;
-}
-
-.ic-state-error .ic-tag {
-  background-color: #e63917;
-}
-
-.ic-state-highlight .ic-tag {
-  background-color: white;
-  color: #3399ff;
-}
-
-.ic-state-highlight .ic-state-error .ic-tag {
-  color: #e63917;
-}
-
-[disabled] .ic-tag,
-.ic-state-disabled .ic-tag {
-  background-color: rgba(0, 0, 0, 0.3);
-}
 .ic-text {
   min-height: 2.66667rem;
   font-size: 1.33333rem;
@@ -649,20 +663,6 @@ body {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-}
-.ic-flex-cell {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-}
-.ic-text-ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 .ic-row-comp {
   min-height: 4rem;
