@@ -33,8 +33,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function BasicRow(_ref) {
     var basic = _ref.basic,
         tag = _ref.tag,
-        stateIcon = _ref.stateIcon,
-        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['basic', 'tag', 'stateIcon']);
+        statusIcon = _ref.statusIcon,
+        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['basic', 'tag', 'statusIcon']);
 
     if (!basic) return null;
 
@@ -51,20 +51,20 @@ function BasicRow(_ref) {
             )
         ),
         tag && (0, _wrapIfNotElement2.default)(tag, { with: _Tag2.default }),
-        stateIcon && (0, _wrapIfNotElement2.default)(stateIcon, { with: 'span' })
+        statusIcon && (0, _wrapIfNotElement2.default)(statusIcon, { with: 'span' })
     );
 }
 
 BasicRow.propTypes = {
     basic: _react.PropTypes.node.isRequired,
     tag: _react.PropTypes.node,
-    stateIcon: _react.PropTypes.node
+    statusIcon: _react.PropTypes.node
 };
 
 BasicRow.defaultProps = {
     basic: null,
     tag: null,
-    stateIcon: null
+    statusIcon: null
 };
 
 exports.default = BasicRow;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.TEXT_ALIGN = exports.BEM = exports.ROOT_BEM = exports.COMPONENT_NAME = undefined;
+exports.PureText = exports.TEXT_ALIGN = exports.BEM = exports.ROOT_BEM = exports.COMPONENT_NAME = undefined;
 
 var _values = require('babel-runtime/core-js/object/values');
 
@@ -45,27 +45,33 @@ var _icBEM = require('../utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
 
+var _withStatus = require('../mixins/withStatus');
+
+var _withStatus2 = _interopRequireDefault(_withStatus);
+
 var _BasicRow = require('./BasicRow');
 
 var _BasicRow2 = _interopRequireDefault(_BasicRow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/**
- * <Text>
- * ======
- * Visual element to be used inside a Component.
- * Usually contains 2 lines, with **Basic text**, **Tag**, **State** at the first line
- * and **Aside text** at the second line.
- *
- * ┌╌╌╌╌╌╌╌╌╌╌╌┬╌╌╌┬╌╌╌╌╌┐
- * ╎Basic text ╎Tag╎State╎
- * ├╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌┴╌╌╌╌╌┴╌╌╌┐
- * ╎Aside text               ╎
- * └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
- */
+var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-text'; /**
+                                                          * <Text>
+                                                          * ======
+                                                          * Visual element to be used inside a Component.
+                                                          * Usually contains 2 lines, with **Basic text**, **Tag**, **State** at the first line
+                                                          * and **Aside text** at the second line.
+                                                          *
+                                                          * <Text> is wrapped with a HOC mixin `withStatus()`, which automatically
+                                                          * handles `statusIcon` and `errorMsg` from context.
+                                                          *
+                                                          * ┌╌╌╌╌╌╌╌╌╌╌╌┬╌╌╌┬╌╌╌╌╌┐
+                                                          * ╎Basic text ╎Tag╎State╎
+                                                          * ├╌╌╌╌╌╌╌╌╌╌╌┴╌╌╌┴╌╌╌╌╌┴╌╌╌┐
+                                                          * ╎Aside text               ╎
+                                                          * └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
+                                                          */
 
-var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-text';
 var ROOT_BEM = exports.ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 
 var BEM = exports.BEM = {
@@ -95,12 +101,16 @@ var Text = function (_PureComponent) {
                 basicRow = _props.basicRow,
                 basic = _props.basic,
                 tag = _props.tag,
-                stateIcon = _props.stateIcon;
+                statusIcon = _props.statusIcon;
 
-            var basicRowProps = { basic: basic, tag: tag, stateIcon: stateIcon };
+            var basicRowProps = { basic: basic, tag: tag, statusIcon: statusIcon };
+
+            if (!(basic || basicRow)) {
+                return null;
+            }
 
             if (_react2.default.isValidElement(basicRow)) {
-                // Inject { basic, tag, stateIcon } to passed-in custom row.
+                // Inject { basic, tag, statusIcon } to passed-in custom row.
                 return _react2.default.cloneElement(basicRow, basicRowProps);
             }
 
@@ -112,18 +122,31 @@ var Text = function (_PureComponent) {
     }, {
         key: 'renderAsideRow',
         value: function renderAsideRow() {
-            if (!this.props.aside) return null;
+            var _props2 = this.props,
+                aside = _props2.aside,
+                errorMsg = _props2.errorMsg;
+
+            var displayText = errorMsg || aside;
+
+            if (!displayText) {
+                return null;
+            }
 
             return _react2.default.createElement(
                 'div',
                 { className: (0, _classnames2.default)('' + BEM.row, '' + BEM.aside) },
-                this.props.aside
+                displayText
             );
         }
     }, {
         key: 'render',
         value: function render() {
-            var rootClassName = BEM.root.modifier(this.props.align);
+            var _props3 = this.props,
+                align = _props3.align,
+                noGrow = _props3.noGrow;
+
+
+            var rootClassName = BEM.root.modifier(align).modifier('no-grow', noGrow);
 
             return _react2.default.createElement(
                 'div',
@@ -139,12 +162,21 @@ var Text = function (_PureComponent) {
 Text.propTypes = (0, _extends3.default)({
     align: _react.PropTypes.oneOf((0, _values2.default)(TEXT_ALIGN)),
     aside: _react.PropTypes.node,
-    basicRow: _react.PropTypes.element
+    basicRow: _react.PropTypes.element,
+    noGrow: _react.PropTypes.bool,
 
-}, _BasicRow2.default.propTypes);
+    // from withStatus()
+    errorMsg: _react.PropTypes.string
+}, _BasicRow2.default.propTypes, {
+    basic: _react.PropTypes.node
+});
 Text.defaultProps = {
     align: LEFT,
     aside: null,
-    basicRow: null
+    basicRow: null,
+    noGrow: false,
+    errorMsg: null,
+    basic: null
 };
-exports.default = Text;
+exports.default = (0, _withStatus2.default)()(Text);
+exports.PureText = Text;
