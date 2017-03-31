@@ -30,7 +30,11 @@ function Tag(_ref) {
     return _react2.default.createElement(
         'span',
         { className: rootClass },
-        children
+        _react2.default.createElement(
+            'span',
+            null,
+            children
+        )
     );
 }
 

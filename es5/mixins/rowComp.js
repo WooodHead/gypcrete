@@ -105,8 +105,8 @@ function determineTextAlign(compAlign, hasIcon) {
 
 var rowComp = function rowComp() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-        _ref$minified = _ref.minified,
-        minified = _ref$minified === undefined ? false : _ref$minified,
+        _ref$defaultMinified = _ref.defaultMinified,
+        defaultMinified = _ref$defaultMinified === undefined ? false : _ref$defaultMinified,
         _ref$defaultAlign = _ref.defaultAlign,
         defaultAlign = _ref$defaultAlign === undefined ? 'left' : _ref$defaultAlign;
 
@@ -158,6 +158,7 @@ var rowComp = function rowComp() {
                     var _classNames;
 
                     var _props3 = this.props,
+                        minified = _props3.minified,
                         align = _props3.align,
                         icon = _props3.icon,
                         basic = _props3.basic,
@@ -171,7 +172,7 @@ var rowComp = function rowComp() {
                         errorMsg = _props3.errorMsg,
                         className = _props3.className,
                         children = _props3.children,
-                        otherProps = (0, _objectWithoutProperties3.default)(_props3, ['align', 'icon', 'basic', 'aside', 'tag', 'active', 'highlight', 'disabled', 'status', 'statusOptions', 'errorMsg', 'className', 'children']);
+                        otherProps = (0, _objectWithoutProperties3.default)(_props3, ['minified', 'align', 'icon', 'basic', 'aside', 'tag', 'active', 'highlight', 'disabled', 'status', 'statusOptions', 'errorMsg', 'className', 'children']);
 
 
                     var bemClass = ROOT_BEM.modifier('minified', minified).modifier(align);
@@ -190,6 +191,8 @@ var rowComp = function rowComp() {
 
         RowComp.displayName = 'rowComp(' + componentName + ')';
         RowComp.propTypes = (0, _extends3.default)({
+            minified: _react.PropTypes.bool,
+
             align: _react.PropTypes.oneOf((0, _values2.default)(ROW_COMP_ALIGN)),
             icon: _react.PropTypes.string,
             basic: _react.PropTypes.node,
@@ -202,6 +205,8 @@ var rowComp = function rowComp() {
 
         }, _withStatus.statusPropTypes);
         RowComp.defaultProps = {
+            minified: defaultMinified,
+
             align: defaultAlign,
             icon: null,
             basic: null,

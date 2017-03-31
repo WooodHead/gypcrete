@@ -289,7 +289,8 @@ body {
 }
 .ic-tag {
   background-color: black;
-  color: white;
+  background-color: currentColor;
+  color: inherit;
   font-size: 1rem;
   line-height: 1em;
   padding: 0.16667rem 0.33333rem;
@@ -300,26 +301,16 @@ body {
   vertical-align: text-top;
 }
 
-.ic-state-editable .ic-tag {
-  background-color: #3399ff;
-}
-
-.ic-state-error .ic-tag {
-  background-color: #e63917;
+.ic-tag > span {
+  color: white;
 }
 
 .ic-state-highlight .ic-tag {
-  background-color: white;
   color: #3399ff;
 }
 
 .ic-state-highlight .ic-state-error .ic-tag {
   color: #e63917;
-}
-
-[disabled] .ic-tag,
-.ic-state-disabled .ic-tag {
-  background-color: rgba(0, 0, 0, 0.3);
 }
 .ic-text-ellipsis {
   overflow: hidden;
@@ -680,6 +671,10 @@ body {
       -ms-flex-align: center;
           align-items: center;
   overflow: hidden;
+}
+
+button.ic-row-comp {
+  padding: 0.33333rem;
 }
 
 .ic-row-comp__body {
