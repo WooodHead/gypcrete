@@ -89,6 +89,10 @@ var BEMFactory = exports.BEMFactory = function () {
     }, {
         key: 'toString',
         value: function toString() {
+            var _ref2 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+                _ref2$stripBlock = _ref2.stripBlock,
+                stripBlock = _ref2$stripBlock === undefined ? false : _ref2$stripBlock;
+
             var _block = this._block,
                 _element = this._element,
                 _modifiers = this._modifiers,
@@ -100,6 +104,8 @@ var BEMFactory = exports.BEMFactory = function () {
             var classes = [baseClass].concat((0, _toConsumableArray3.default)(_modifiers.map(function (modifier) {
                 return '' + baseClass + MODIFIER_SEPARATOR + modifier;
             })), (0, _toConsumableArray3.default)(_nonBemClasses));
+
+            if (stripBlock) classes.shift();
 
             return classes.join(' ');
         }
