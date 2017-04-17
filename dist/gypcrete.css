@@ -655,6 +655,43 @@ body {
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
 }
+.ic-tooltip {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  line-height: 1em;
+  padding: 0.16667rem 0.33333rem;
+  border: 0.08333rem solid transparent;
+  border-radius: 0.5rem;
+  background-clip: padding-box;
+  display: inline-block;
+  vertical-align: text-top;
+  position: relative;
+}
+
+.ic-tooltip__arrow {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 0.5rem;
+}
+
+.ic-tooltip--top .ic-tooltip__arrow {
+  border-top-color: black;
+  top: 100%;
+  left: 50%;
+  margin-left: -0.5rem;
+}
+
+.ic-tooltip--bottom .ic-tooltip__arrow {
+  border-bottom-color: black;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -0.5rem;
+}
 .ic-iconlayout {
   position: relative;
   -webkit-box-flex: 0;
