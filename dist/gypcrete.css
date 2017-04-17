@@ -16,7 +16,7 @@
   pointer-events: none !important;
 }
 
-[hidden]
+[hidden],
 .ic-state-hidden {
   display: none;
 }
@@ -380,7 +380,7 @@ body {
 }
 
 /* Direct copy from fontello */
-/* stylelint-disable rule-non-nested-empty-line-before */
+/* stylelint-disable rule-empty-line-before */
 .ic-icon-add:before {
   content: "\E800";
   /* "" */
