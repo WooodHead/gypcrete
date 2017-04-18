@@ -8,6 +8,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
@@ -37,9 +41,9 @@ function FlexCell(_ref) {
 }
 
 FlexCell.propTypes = {
-    shrink: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.number]),
-    grow: _react.PropTypes.oneOfType([_react.PropTypes.bool, _react.PropTypes.number]),
-    basis: _react.PropTypes.string
+    shrink: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.number]),
+    grow: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.number]),
+    basis: _propTypes2.default.string
 };
 
 FlexCell.defaultProps = {

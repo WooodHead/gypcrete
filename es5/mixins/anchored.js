@@ -45,6 +45,10 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _documentOffset = require('document-offset');
 
 var _documentOffset2 = _interopRequireDefault(_documentOffset);
@@ -60,8 +64,8 @@ var BOTTOM = 'bottom';
 var ANCHORED_PLACEMENT = exports.ANCHORED_PLACEMENT = { TOP: TOP, BOTTOM: BOTTOM };
 
 var anchoredPropTypes = exports.anchoredPropTypes = {
-    placement: _react.PropTypes.oneOf((0, _values2.default)(ANCHORED_PLACEMENT)),
-    arrowStyle: _react.PropTypes.objectOf(_react.PropTypes.number)
+    placement: _propTypes2.default.oneOf((0, _values2.default)(ANCHORED_PLACEMENT)),
+    arrowStyle: _propTypes2.default.objectOf(_propTypes2.default.number)
 };
 
 var DEFAULT_OPTIONS = {
@@ -223,7 +227,7 @@ var anchored = function anchored() {
 
         Anchored.displayName = 'anchored(' + componentName + ')';
         Anchored.propTypes = {
-            anchor: _react.PropTypes.oneOfType([_react.PropTypes.instanceOf(window.Node), _react.PropTypes.instanceOf(_react.Component)])
+            anchor: _propTypes2.default.oneOfType([_propTypes2.default.instanceOf(window.Node), _propTypes2.default.instanceOf(_react.Component)])
         };
         Anchored.defaultProps = {
             anchor: null

@@ -21,6 +21,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -58,10 +62,10 @@ function Icon(_ref) {
 }
 
 Icon.propTypes = {
-    type: _react.PropTypes.string.isRequired,
-    color: _react.PropTypes.oneOf((0, _values2.default)(ICON_COLOR)),
-    large: _react.PropTypes.bool,
-    spinning: _react.PropTypes.bool
+    type: _propTypes2.default.string.isRequired,
+    color: _propTypes2.default.oneOf((0, _values2.default)(ICON_COLOR)),
+    large: _propTypes2.default.bool,
+    spinning: _propTypes2.default.bool
 };
 
 Icon.defaultProps = {

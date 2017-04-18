@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _FlexCell = require('./FlexCell');
 
 var _FlexCell2 = _interopRequireDefault(_FlexCell);
@@ -54,9 +58,9 @@ function BasicRow(_ref) {
 }
 
 BasicRow.propTypes = {
-    basic: _react.PropTypes.node.isRequired,
-    tag: _react.PropTypes.node,
-    statusIcon: _react.PropTypes.node
+    basic: _propTypes2.default.node.isRequired,
+    tag: _propTypes2.default.node,
+    statusIcon: _propTypes2.default.node
 };
 
 BasicRow.defaultProps = {

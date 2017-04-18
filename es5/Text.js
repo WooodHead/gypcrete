@@ -37,6 +37,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -142,14 +146,14 @@ var Text = function (_PureComponent) {
 }(_react.PureComponent);
 
 Text.propTypes = (0, _extends3.default)({
-    align: _react.PropTypes.oneOf((0, _values2.default)(TEXT_ALIGN)),
-    aside: _react.PropTypes.node,
-    basicRow: _react.PropTypes.element,
-    noGrow: _react.PropTypes.bool,
+    align: _propTypes2.default.oneOf((0, _values2.default)(TEXT_ALIGN)),
+    aside: _propTypes2.default.node,
+    basicRow: _propTypes2.default.element,
+    noGrow: _propTypes2.default.bool,
 
-    errorMsg: _react.PropTypes.string
+    errorMsg: _propTypes2.default.string
 }, _BasicRow2.default.propTypes, {
-    basic: _react.PropTypes.node
+    basic: _propTypes2.default.node
 });
 Text.defaultProps = {
     align: LEFT,

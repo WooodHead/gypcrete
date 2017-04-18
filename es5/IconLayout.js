@@ -33,6 +33,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _withStatus = require('./mixins/withStatus');
 
 var _withStatus2 = _interopRequireDefault(_withStatus);
@@ -126,7 +130,7 @@ var IconLayout = function (_PureComponent) {
 }(_react.PureComponent);
 
 IconLayout.propTypes = (0, _extends3.default)({
-    icon: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]).isRequired
+    icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]).isRequired
 
 }, _withStatus.withStatusPropTypes);
 exports.default = (0, _withStatus2.default)({ position: _StatusIcon.STATUS_POSITION.CORNER })(IconLayout);

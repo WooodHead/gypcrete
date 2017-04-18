@@ -45,6 +45,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -191,17 +195,17 @@ var rowComp = function rowComp() {
 
         RowComp.displayName = 'rowComp(' + componentName + ')';
         RowComp.propTypes = (0, _extends3.default)({
-            minified: _react.PropTypes.bool,
+            minified: _propTypes2.default.bool,
 
-            align: _react.PropTypes.oneOf((0, _values2.default)(ROW_COMP_ALIGN)),
-            icon: _react.PropTypes.string,
-            basic: _react.PropTypes.node,
-            aside: _react.PropTypes.node,
-            tag: _react.PropTypes.node,
+            align: _propTypes2.default.oneOf((0, _values2.default)(ROW_COMP_ALIGN)),
+            icon: _propTypes2.default.string,
+            basic: _propTypes2.default.node,
+            aside: _propTypes2.default.node,
+            tag: _propTypes2.default.node,
 
-            active: _react.PropTypes.bool,
-            highlight: _react.PropTypes.bool,
-            disabled: _react.PropTypes.bool
+            active: _propTypes2.default.bool,
+            highlight: _propTypes2.default.bool,
+            disabled: _propTypes2.default.bool
 
         }, _withStatus.statusPropTypes);
         RowComp.defaultProps = {

@@ -33,6 +33,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
@@ -158,9 +162,9 @@ var StatusIcon = function (_PureComponent) {
 }(_react.PureComponent);
 
 StatusIcon.propTypes = {
-    status: _react.PropTypes.oneOf((0, _values2.default)(STATUS_CODE)).isRequired,
-    position: _react.PropTypes.oneOf((0, _values2.default)(STATUS_POSITION)),
-    autohide: _react.PropTypes.bool
+    status: _propTypes2.default.oneOf((0, _values2.default)(STATUS_CODE)).isRequired,
+    position: _propTypes2.default.oneOf((0, _values2.default)(STATUS_POSITION)),
+    autohide: _propTypes2.default.bool
 };
 StatusIcon.defaultProps = {
     status: null,
