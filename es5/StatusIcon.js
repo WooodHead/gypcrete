@@ -41,6 +41,10 @@ var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
 
+var _prefixClass = require('./utils/prefixClass');
+
+var _prefixClass2 = _interopRequireDefault(_prefixClass);
+
 var _Icon = require('./Icon');
 
 var _Icon2 = _interopRequireDefault(_Icon);
@@ -56,7 +60,7 @@ var INLINE = 'inline';
 var CORNER = 'corner';
 var STATUS_POSITION = exports.STATUS_POSITION = { INLINE: INLINE, CORNER: CORNER };
 
-var COMPONENT_NAME = 'ic-status-icon';
+var COMPONENT_NAME = (0, _prefixClass2.default)('status-icon');
 var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 
 var ICON_HIDE_TIMEOUT = 2 * 1000;

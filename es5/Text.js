@@ -49,6 +49,10 @@ var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
 
+var _prefixClass = require('./utils/prefixClass');
+
+var _prefixClass2 = _interopRequireDefault(_prefixClass);
+
 var _withStatus = require('./mixins/withStatus');
 
 var _withStatus2 = _interopRequireDefault(_withStatus);
@@ -59,7 +63,7 @@ var _BasicRow2 = _interopRequireDefault(_BasicRow);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-text';
+var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('text');
 var ROOT_BEM = exports.ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 
 var BEM = exports.BEM = {

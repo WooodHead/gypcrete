@@ -33,9 +33,13 @@ var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
 
+var _prefixClass = require('./utils/prefixClass');
+
+var _prefixClass2 = _interopRequireDefault(_prefixClass);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var COMPONENT_NAME = 'ic-icon';
+var COMPONENT_NAME = (0, _prefixClass2.default)('icon');
 var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 
 var GRAY = 'gray';
@@ -53,7 +57,7 @@ function Icon(_ref) {
 
     var bemClass = ROOT_BEM.modifier(color, !!color).modifier('large', large).modifier('spin', spinning);
 
-    var rootClassName = (0, _classnames2.default)(className, '' + bemClass, 'ic-icon-' + type);
+    var rootClassName = (0, _classnames2.default)(className, '' + bemClass, 'gyp-icon-' + type);
 
     return _react2.default.createElement('span', (0, _extends3.default)({
         className: rootClassName,

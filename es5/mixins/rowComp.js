@@ -61,9 +61,13 @@ var _icBEM = require('../utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
 
-var _icState = require('../utils/icState');
+var _prefixClass = require('../utils/prefixClass');
 
-var _icState2 = _interopRequireDefault(_icState);
+var _prefixClass2 = _interopRequireDefault(_prefixClass);
+
+var _prefixState = require('../utils/prefixState');
+
+var _prefixState2 = _interopRequireDefault(_prefixState);
 
 var _withStatus = require('./withStatus');
 
@@ -79,15 +83,15 @@ var _StatusIcon = require('../StatusIcon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-row-comp';
+var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('row-comp');
 var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 var ROW_COMP_BODY = exports.ROW_COMP_BODY = ROOT_BEM.element('body');
 
-var CLASS_ACTIVE = (0, _icState2.default)('active');
-var CLASS_HIGHLIGHT = (0, _icState2.default)('highlight');
-var CLASS_ERROR = (0, _icState2.default)('error');
-var CLASS_DISABLED = (0, _icState2.default)('disabled');
-var CLASS_UNTOUCHABLE = (0, _icState2.default)('untouchable');
+var CLASS_ACTIVE = (0, _prefixState2.default)('active');
+var CLASS_HIGHLIGHT = (0, _prefixState2.default)('highlight');
+var CLASS_ERROR = (0, _prefixState2.default)('error');
+var CLASS_DISABLED = (0, _prefixState2.default)('disabled');
+var CLASS_UNTOUCHABLE = (0, _prefixState2.default)('untouchable');
 
 var LEFT = 'left';
 var CENTER = 'center';

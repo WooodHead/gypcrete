@@ -45,6 +45,10 @@ var _wrapIfNotElement = require('./utils/wrapIfNotElement');
 
 var _wrapIfNotElement2 = _interopRequireDefault(_wrapIfNotElement);
 
+var _prefixClass = require('./utils/prefixClass');
+
+var _prefixClass2 = _interopRequireDefault(_prefixClass);
+
 var _AnchoredTooltip = require('./AnchoredTooltip');
 
 var _AnchoredTooltip2 = _interopRequireDefault(_AnchoredTooltip);
@@ -57,7 +61,7 @@ var _StatusIcon = require('./StatusIcon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var COMPONENT_NAME = exports.COMPONENT_NAME = 'ic-iconlayout';
+var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('iconlayout');
 var IconLayout = function (_PureComponent) {
     (0, _inherits3.default)(IconLayout, _PureComponent);
 
