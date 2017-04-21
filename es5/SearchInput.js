@@ -1,0 +1,178 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.PureSearchInput = exports.BEM = undefined;
+
+var _values = require('babel-runtime/core-js/object/values');
+
+var _values2 = _interopRequireDefault(_values);
+
+var _extends2 = require('babel-runtime/helpers/extends');
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _icBEM = require('./utils/icBEM');
+
+var _icBEM2 = _interopRequireDefault(_icBEM);
+
+var _rowComp = require('./mixins/rowComp');
+
+var _rowComp2 = _interopRequireDefault(_rowComp);
+
+var _Icon = require('./Icon');
+
+var _Icon2 = _interopRequireDefault(_Icon);
+
+var _RowCompBody = require('./RowCompBody');
+
+var _RowCompBody2 = _interopRequireDefault(_RowCompBody);
+
+var _StatusIcon = require('./StatusIcon');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var COMPONENT_NAME = 'ic-search-input';
+var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
+var BEM = exports.BEM = {
+    root: ROOT_BEM,
+    input: ROOT_BEM.element('input'),
+    resetBtn: ROOT_BEM.element('reset-button')
+};
+
+var SearchInput = function (_Component) {
+    (0, _inherits3.default)(SearchInput, _Component);
+
+    function SearchInput() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        (0, _classCallCheck3.default)(this, SearchInput);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SearchInput.__proto__ || (0, _getPrototypeOf2.default)(SearchInput)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            inputValue: _this.props.defaultValue
+        }, _this.handleInputChange = function (event) {
+            _this.setState({ inputValue: event.target.value });
+        }, _this.handleResetButtonClick = function () {
+            _this.setState({ inputValue: '' });
+        }, _this.handleInputBlur = function () {
+            _this.notifySearch();
+        }, _this.handleInputKeyup = function (event) {
+            if (event.key === 'Enter') {
+                _this.notifySearch();
+            }
+        }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
+    }
+
+    (0, _createClass3.default)(SearchInput, [{
+        key: 'notifySearch',
+        value: function notifySearch() {
+            this.props.onSearch(this.state.inputValue);
+        }
+    }, {
+        key: 'renderResetButton',
+        value: function renderResetButton() {
+            return _react2.default.createElement(
+                'button',
+                {
+                    type: 'button',
+                    className: '' + BEM.resetBtn,
+                    'aria-label': 'Reset',
+                    tabIndex: '-1',
+                    onClick: this.handleResetButtonClick },
+                _react2.default.createElement(_Icon2.default, { type: 'delete', color: 'gray' })
+            );
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _props = this.props,
+                inputProps = _props.input,
+                placeholder = _props.placeholder,
+                className = _props.className;
+            var inputValue = this.state.inputValue;
+
+
+            var rootClassName = (0, _classnames2.default)(className, '' + BEM.root);
+            var isLoading = this.context.status === _StatusIcon.STATUS_CODE.LOADING;
+
+            return _react2.default.createElement(
+                'div',
+                { className: rootClassName },
+                _react2.default.createElement(
+                    _RowCompBody2.default,
+                    null,
+                    _react2.default.createElement(_Icon2.default, { type: 'search' }),
+                    _react2.default.createElement('input', (0, _extends3.default)({
+                        type: 'text',
+                        className: '' + BEM.input,
+                        placeholder: placeholder,
+                        value: inputValue,
+                        onChange: this.handleInputChange,
+                        onBlur: this.handleInputBlur,
+                        onKeyUp: this.handleInputKeyup
+                    }, inputProps)),
+                    isLoading && _react2.default.createElement(_Icon2.default, { type: 'loading', spinning: true, color: 'gray' }),
+                    inputValue && !isLoading && this.renderResetButton()
+                )
+            );
+        }
+    }]);
+    return SearchInput;
+}(_react.Component);
+
+SearchInput.propTypes = {
+    input: _propTypes2.default.object,
+    placeholder: _propTypes2.default.string,
+    defaultValue: _propTypes2.default.string,
+    onSearch: _propTypes2.default.func
+};
+SearchInput.defaultProps = {
+    input: {},
+    placeholder: 'Search',
+    defaultValue: '',
+    onSearch: function onSearch() {}
+};
+SearchInput.contextTypes = {
+    status: _propTypes2.default.oneOf((0, _values2.default)(_StatusIcon.STATUS_CODE))
+};
+exports.default = (0, _rowComp2.default)()(SearchInput);
+exports.PureSearchInput = SearchInput;

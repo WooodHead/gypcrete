@@ -320,8 +320,8 @@ body {
 @charset "UTF-8";
 @font-face {
   font-family: "ic-icon";
-  src: url(fonts/ic-icon-700c30.eot);
-  src: url(fonts/ic-icon-700c30.eot#iefix) format("embedded-opentype"), url(fonts/ic-icon-4aeede.woff2) format("woff2"), url(fonts/ic-icon-6e7cfb.woff) format("woff"), url(fonts/ic-icon-7f5014.ttf) format("truetype"), url(fonts/ic-icon-914ea4.svg#ic-icon) format("svg");
+  src: url(fonts/ic-icon-87da1c.eot);
+  src: url(fonts/ic-icon-87da1c.eot#iefix) format("embedded-opentype"), url(fonts/ic-icon-6ed491.woff2) format("woff2"), url(fonts/ic-icon-8bc8b1.woff) format("woff"), url(fonts/ic-icon-5b948a.ttf) format("truetype"), url(fonts/ic-icon-eaa7d8.svg#ic-icon) format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -566,6 +566,56 @@ body {
 .ic-icon-play:before {
   content: '\E824';
   /* '' */
+}
+
+.ic-icon-search:before {
+  content: '\E825';
+  /* '' */
+}
+
+.ic-icon-crm-address:before {
+  content: '\E826';
+  /* '' */
+}
+
+.ic-icon-crm-age:before {
+  content: '\E827';
+  /* '' */
+}
+
+.ic-icon-crm-birthday:before {
+  content: '\E828';
+  /* '' */
+}
+
+.ic-icon-crm-email:before {
+  content: '\E829';
+  /* '' */
+}
+
+.ic-icon-crm-gender:before {
+  content: '\E82A';
+  /* '' */
+}
+
+.ic-icon-crm-member-name:before {
+  content: '\E82B';
+  /* '' */
+}
+
+.ic-icon-crm-member-note:before {
+  content: '\E82C';
+  /* '' */
+}
+
+.ic-icon-crm-phone-land:before {
+  content: '\E82D';
+  /* '' */
+}
+
+.ic-icon-crm-phone-mobile:before {
+  content: '\E82E';
+  /* '' */
 }
 
 /* stylelint-enable */
