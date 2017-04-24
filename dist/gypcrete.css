@@ -922,3 +922,48 @@ button.gyp-row-comp {
 .gyp-button--icon-only .gyp-row {
   color: #b3b3b3;
 }
+.gyp-search-input ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-search-input :-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-search-input ::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-search-input__input {
+  height: 2rem;
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  outline: none;
+}
+
+.gyp-search-input__reset-button {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  text-align: inherit;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.gyp-search-input .gyp-row-comp__body {
+  border: 1px solid #b3b3b3;
+  border-radius: 6px;
+  box-sizing: content-box;
+}

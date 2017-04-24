@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -61,6 +61,10 @@ var _IconButton = require('./IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
+var _SearchInput = require('./SearchInput');
+
+var _SearchInput2 = _interopRequireDefault(_SearchInput);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.BasicRow = _BasicRow2.default;
@@ -77,3 +81,4 @@ exports.TextEllipsis = _TextEllipsis2.default;
 exports.TextLabel = _TextLabel2.default;
 exports.Button = _Button2.default;
 exports.IconButton = _IconButton2.default;
+exports.SearchInput = _SearchInput2.default;
