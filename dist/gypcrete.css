@@ -936,6 +936,7 @@ button.gyp-row-comp {
 
 .gyp-search-input__input {
   height: 2rem;
+  background-color: white;
   font-size: 1rem;
   border: none;
   padding: 0;
@@ -963,6 +964,7 @@ button.gyp-row-comp {
 }
 
 .gyp-search-input .gyp-row-comp__body {
+  background-color: white;
   border: 1px solid #b3b3b3;
   border-radius: 6px;
   box-sizing: content-box;

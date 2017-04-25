@@ -92,11 +92,14 @@ var SearchInput = function (_Component) {
         }
 
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = SearchInput.__proto__ || (0, _getPrototypeOf2.default)(SearchInput)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            inputValue: _this.props.defaultValue
+            inputValue: _this.props.defaultValue,
+            lastNotifiedValue: null
         }, _this.handleInputChange = function (event) {
             _this.setState({ inputValue: event.target.value });
         }, _this.handleResetButtonClick = function () {
-            _this.setState({ inputValue: '' });
+            _this.setState({ inputValue: '' }, function () {
+                return _this.notifySearch();
+            });
         }, _this.handleInputBlur = function () {
             _this.notifySearch();
         }, _this.handleInputKeyup = function (event) {
@@ -109,7 +112,15 @@ var SearchInput = function (_Component) {
     (0, _createClass3.default)(SearchInput, [{
         key: 'notifySearch',
         value: function notifySearch() {
-            this.props.onSearch(this.state.inputValue);
+            var _state = this.state,
+                inputValue = _state.inputValue,
+                lastNotifiedValue = _state.lastNotifiedValue;
+
+
+            if (inputValue !== lastNotifiedValue) {
+                this.setState({ lastNotifiedValue: inputValue });
+                this.props.onSearch(inputValue);
+            }
         }
     }, {
         key: 'renderResetButton',

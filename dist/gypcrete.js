@@ -12547,11 +12547,14 @@ var SearchInput = function (_Component) {
         }
 
         return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = SearchInput.__proto__ || __WEBPACK_IMPORTED_MODULE_2_babel_runtime_core_js_object_get_prototype_of___default()(SearchInput)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            inputValue: _this.props.defaultValue
+            inputValue: _this.props.defaultValue,
+            lastNotifiedValue: null
         }, _this.handleInputChange = function (event) {
             _this.setState({ inputValue: event.target.value });
         }, _this.handleResetButtonClick = function () {
-            _this.setState({ inputValue: '' });
+            _this.setState({ inputValue: '' }, function () {
+                return _this.notifySearch();
+            });
         }, _this.handleInputBlur = function () {
             _this.notifySearch();
         }, _this.handleInputKeyup = function (event) {
@@ -12564,7 +12567,15 @@ var SearchInput = function (_Component) {
     __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_createClass___default()(SearchInput, [{
         key: 'notifySearch',
         value: function notifySearch() {
-            this.props.onSearch(this.state.inputValue);
+            var _state = this.state,
+                inputValue = _state.inputValue,
+                lastNotifiedValue = _state.lastNotifiedValue;
+
+
+            if (inputValue !== lastNotifiedValue) {
+                this.setState({ lastNotifiedValue: inputValue });
+                this.props.onSearch(inputValue);
+            }
         }
     }, {
         key: 'renderResetButton',
