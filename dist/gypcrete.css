@@ -627,6 +627,7 @@ body {
   border-radius: 50%;
   position: relative;
   display: inline-block;
+  z-index: 10;
 }
 
 .gyp-status-icon .gyp-icon {
@@ -790,10 +791,10 @@ button.gyp-row-comp {
 }
 
 .gyp-row-comp--reverse .gyp-row-comp__body {
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
 .gyp-row-comp.gyp-state-active {
@@ -921,6 +922,41 @@ button.gyp-row-comp {
 
 .gyp-button--icon-only .gyp-row {
   color: #b3b3b3;
+}
+.gyp-checkbox__icon-wrapper {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+.gyp-checkbox__input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.gyp-checkbox__button {
+  position: relative;
+  z-index: 1;
+}
+
+.gyp-checkbox__button:before {
+  content: "\E814";
+}
+
+.gyp-checkbox__input:checked + .gyp-checkbox__button:before,
+.gyp-checkbox__input:checked + .gyp-iconlayout > .gyp-checkbox__button:before {
+  content: "\E816";
+}
+
+.gyp-checkbox__input:indeterminate + .gyp-checkbox__button:before,
+.gyp-checkbox__input:indeterminate + .gyp-iconlayout > .gyp-checkbox__button:before {
+  content: "\E815";
 }
 .gyp-search-input ::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.3);

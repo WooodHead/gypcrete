@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -61,6 +61,14 @@ var _IconButton = require('./IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
 
+var _Checkbox = require('./Checkbox');
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+var _IconCheckbox = require('./IconCheckbox');
+
+var _IconCheckbox2 = _interopRequireDefault(_IconCheckbox);
+
 var _SearchInput = require('./SearchInput');
 
 var _SearchInput2 = _interopRequireDefault(_SearchInput);
@@ -81,4 +89,6 @@ exports.TextEllipsis = _TextEllipsis2.default;
 exports.TextLabel = _TextLabel2.default;
 exports.Button = _Button2.default;
 exports.IconButton = _IconButton2.default;
+exports.Checkbox = _Checkbox2.default;
+exports.IconCheckbox = _IconCheckbox2.default;
 exports.SearchInput = _SearchInput2.default;

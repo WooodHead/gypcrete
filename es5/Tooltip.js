@@ -54,7 +54,8 @@ function Tooltip(_ref) {
     var placement = _ref.placement,
         arrowStyle = _ref.arrowStyle,
         className = _ref.className,
-        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['placement', 'arrowStyle', 'className']);
+        children = _ref.children,
+        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['placement', 'arrowStyle', 'className', 'children']);
 
     var bemClass = BEM.root.modifier(placement);
     var rootClassName = (0, _classnames2.default)(className, '' + bemClass);
@@ -62,7 +63,7 @@ function Tooltip(_ref) {
     return _react2.default.createElement(
         'span',
         (0, _extends3.default)({ className: rootClassName }, otherProps),
-        'content',
+        children,
         _react2.default.createElement('span', { className: BEM.arrow, style: arrowStyle })
     );
 }
