@@ -29,10 +29,6 @@ var _rowComp = require('./mixins/rowComp');
 
 var _rowComp2 = _interopRequireDefault(_rowComp);
 
-var _RowCompBody = require('./RowCompBody');
-
-var _RowCompBody2 = _interopRequireDefault(_RowCompBody);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('text-label');
@@ -47,11 +43,7 @@ function TextLabel(_ref) {
     return _react2.default.createElement(
         'div',
         (0, _extends3.default)({ className: rootClassName }, otherProps),
-        _react2.default.createElement(
-            _RowCompBody2.default,
-            null,
-            children
-        )
+        children
     );
 }
 

@@ -61,10 +61,6 @@ var _Icon = require('./Icon');
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _RowCompBody = require('./RowCompBody');
-
-var _RowCompBody2 = _interopRequireDefault(_RowCompBody);
-
 var _StatusIcon = require('./StatusIcon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -74,6 +70,7 @@ var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 var BEM = exports.BEM = {
     root: ROOT_BEM,
     input: ROOT_BEM.element('input'),
+    inputWrapper: ROOT_BEM.element('input-wrapper'),
     resetBtn: ROOT_BEM.element('reset-button')
 };
 
@@ -153,8 +150,8 @@ var SearchInput = function (_Component) {
                 'div',
                 { className: rootClassName },
                 _react2.default.createElement(
-                    _RowCompBody2.default,
-                    null,
+                    'div',
+                    { className: BEM.inputWrapper },
                     _react2.default.createElement(_Icon2.default, { type: 'search' }),
                     _react2.default.createElement('input', (0, _extends3.default)({
                         type: 'text',

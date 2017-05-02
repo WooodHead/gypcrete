@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.RowCompBody = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -40,10 +40,6 @@ var _FlexCell2 = _interopRequireDefault(_FlexCell);
 var _IconLayout = require('./IconLayout');
 
 var _IconLayout2 = _interopRequireDefault(_IconLayout);
-
-var _RowCompBody = require('./RowCompBody');
-
-var _RowCompBody2 = _interopRequireDefault(_RowCompBody);
 
 var _TextEllipsis = require('./TextEllipsis');
 
@@ -84,7 +80,6 @@ exports.Tooltip = _Tooltip2.default;
 exports.AnchoredTooltip = _AnchoredTooltip2.default;
 exports.FlexCell = _FlexCell2.default;
 exports.IconLayout = _IconLayout2.default;
-exports.RowCompBody = _RowCompBody2.default;
 exports.TextEllipsis = _TextEllipsis2.default;
 exports.TextLabel = _TextLabel2.default;
 exports.Button = _Button2.default;

@@ -61,10 +61,6 @@ var _Icon = require('./Icon');
 
 var _Icon2 = _interopRequireDefault(_Icon);
 
-var _RowCompBody = require('./RowCompBody');
-
-var _RowCompBody2 = _interopRequireDefault(_RowCompBody);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('checkbox');
@@ -149,12 +145,8 @@ var Checkbox = function (_PureComponent) {
             return _react2.default.createElement(
                 'div',
                 (0, _extends3.default)({ className: rootClassName }, otherProps),
-                _react2.default.createElement(
-                    _RowCompBody2.default,
-                    null,
-                    this.renderCheckboxInput(inputProps, overrideButton),
-                    children
-                )
+                this.renderCheckboxInput(inputProps, overrideButton),
+                children
             );
         }
     }]);

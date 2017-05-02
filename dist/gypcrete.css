@@ -753,48 +753,37 @@ body {
   min-height: 3rem;
   font-size: 1rem;
   line-height: 1.125rem;
-  padding: 0.25rem;
   box-sizing: border-box;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: hidden;
-}
-
-button.gyp-row-comp {
-  padding: 0.25rem;
-}
-
-.gyp-row-comp__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 100%;
-          flex: 1 1 100%;
-  overflow: hidden;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
-.gyp-row-comp--center .gyp-row-comp__body {
+.gyp-row-comp--center {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-.gyp-row-comp--reverse .gyp-row-comp__body {
+.gyp-row-comp--reverse {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}
+
+.gyp-row-comp, button.gyp-row-comp {
+  padding: 0.5rem 0.25rem;
 }
 
 .gyp-row-comp.gyp-state-active {
@@ -958,6 +947,10 @@ button.gyp-row-comp {
 .gyp-checkbox__input:indeterminate + .gyp-iconlayout > .gyp-checkbox__button:before {
   content: "\E815";
 }
+.gyp-search-input {
+  padding: 0.4375rem;
+}
+
 .gyp-search-input ::-webkit-input-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -999,9 +992,18 @@ button.gyp-row-comp {
           user-select: none;
 }
 
-.gyp-search-input .gyp-row-comp__body {
+.gyp-search-input__input-wrapper {
   background-color: white;
   border: 1px solid #b3b3b3;
   border-radius: 6px;
   box-sizing: content-box;
+  overflow: hidden;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
 }
