@@ -88,10 +88,12 @@ var IconLayout = function (_PureComponent) {
     (0, _createClass3.default)(IconLayout, [{
         key: 'renderTooltip',
         value: function renderTooltip() {
-            var errorMsg = this.props.errorMsg;
+            var _props = this.props,
+                tooltip = _props.tooltip,
+                errorMsg = _props.errorMsg;
 
 
-            if (!errorMsg) {
+            if (!errorMsg || !tooltip) {
                 return null;
             }
 
@@ -108,15 +110,15 @@ var IconLayout = function (_PureComponent) {
         value: function render() {
             var _this2 = this;
 
-            var _props = this.props,
-                icon = _props.icon,
-                statusIcon = _props.statusIcon;
+            var _props2 = this.props,
+                icon = _props2.icon,
+                statusIcon = _props2.statusIcon;
             var showTooltip = this.state.showTooltip;
 
             var iconElement = (0, _wrapIfNotElement2.default)(icon, { with: _Icon2.default, via: 'type' });
 
             return _react2.default.createElement(
-                'span',
+                'div',
                 {
                     ref: function ref(_ref2) {
                         _this2.nodeRef = _ref2;
@@ -134,8 +136,12 @@ var IconLayout = function (_PureComponent) {
 }(_react.PureComponent);
 
 IconLayout.propTypes = (0, _extends3.default)({
-    icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]).isRequired
+    icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]).isRequired,
+    tooltip: _propTypes2.default.bool
 
 }, _withStatus.withStatusPropTypes);
+IconLayout.defaultProps = {
+    tooltip: true
+};
 exports.default = (0, _withStatus2.default)({ position: _StatusIcon.STATUS_POSITION.CORNER })(IconLayout);
 exports.PureIconLayout = IconLayout;

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -32,6 +32,10 @@ var _Tooltip2 = _interopRequireDefault(_Tooltip);
 var _AnchoredTooltip = require('./AnchoredTooltip');
 
 var _AnchoredTooltip2 = _interopRequireDefault(_AnchoredTooltip);
+
+var _SwitchIcon = require('./SwitchIcon');
+
+var _SwitchIcon2 = _interopRequireDefault(_SwitchIcon);
 
 var _FlexCell = require('./FlexCell');
 
@@ -65,6 +69,10 @@ var _IconCheckbox = require('./IconCheckbox');
 
 var _IconCheckbox2 = _interopRequireDefault(_IconCheckbox);
 
+var _Switch = require('./Switch');
+
+var _Switch2 = _interopRequireDefault(_Switch);
+
 var _SearchInput = require('./SearchInput');
 
 var _SearchInput2 = _interopRequireDefault(_SearchInput);
@@ -78,6 +86,7 @@ exports.Tag = _Tag2.default;
 exports.Text = _Text2.default;
 exports.Tooltip = _Tooltip2.default;
 exports.AnchoredTooltip = _AnchoredTooltip2.default;
+exports.SwitchIcon = _SwitchIcon2.default;
 exports.FlexCell = _FlexCell2.default;
 exports.IconLayout = _IconLayout2.default;
 exports.TextEllipsis = _TextEllipsis2.default;
@@ -86,4 +95,5 @@ exports.Button = _Button2.default;
 exports.IconButton = _IconButton2.default;
 exports.Checkbox = _Checkbox2.default;
 exports.IconCheckbox = _IconCheckbox2.default;
+exports.Switch = _Switch2.default;
 exports.SearchInput = _SearchInput2.default;
