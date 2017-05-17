@@ -637,7 +637,7 @@ body {
   border-radius: 50%;
   position: relative;
   display: inline-block;
-  z-index: 10;
+  z-index: 5;
 }
 
 .gyp-status-icon .gyp-icon {
@@ -715,6 +715,81 @@ body {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
+}
+.gyp-editable-text {
+  cursor: pointer;
+}
+
+.gyp-editable-text__basic-label {
+  color: #3399ff;
+}
+
+.gyp-editable-text__basic-row {
+  position: relative;
+}
+
+.gyp-editable-text__input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #3399ff;
+  font: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  z-index: 6;
+  cursor: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: opacity;
+}
+
+.gyp-editable-text ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-text :-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-text ::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-text--empty .gyp-editable-text__basic-label {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-text--focused {
+  cursor: auto;
+}
+
+.gyp-editable-text--focused .gyp-editable-text__input {
+  opacity: 1;
+  outline: none;
+  cursor: text;
+}
+
+.gyp-editable-text--focused .gyp-editable-text__basic-row {
+  box-shadow: 0 2px 0 #3399ff;
+}
+
+.gyp-editable-text--focused .gyp-editable-text__basic-label {
+  opacity: 0;
+}
+
+.gyp-editable-text.gyp-text--center .gyp-editable-text__input {
+  text-align: center;
+}
+
+.gyp-editable-text.gyp-text--right .gyp-editable-text__input {
+  text-align: right;
+}
+
+.gyp-state-error .gyp-editable-text__basic-label {
+  color: inherit;
 }
 .gyp-tooltip {
   background-color: black;

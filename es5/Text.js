@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.PureText = exports.TEXT_ALIGN = exports.BEM = exports.ROOT_BEM = exports.COMPONENT_NAME = undefined;
+exports.PureText = exports.TEXT_ALIGN = exports.BEM = exports.COMPONENT_NAME = undefined;
 
 var _values = require('babel-runtime/core-js/object/values');
 
@@ -64,7 +64,7 @@ var _BasicRow2 = _interopRequireDefault(_BasicRow);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('text');
-var ROOT_BEM = exports.ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
+var ROOT_BEM = (0, _icBEM2.default)(COMPONENT_NAME);
 
 var BEM = exports.BEM = {
     root: ROOT_BEM,
@@ -133,10 +133,13 @@ var Text = function (_PureComponent) {
         value: function render() {
             var _props3 = this.props,
                 align = _props3.align,
-                noGrow = _props3.noGrow;
+                noGrow = _props3.noGrow,
+                className = _props3.className;
 
 
-            var rootClassName = BEM.root.modifier(align).modifier('no-grow', noGrow);
+            var bemClass = BEM.root.modifier(align).modifier('no-grow', noGrow);
+
+            var rootClassName = (0, _classnames2.default)('' + bemClass, className);
 
             return _react2.default.createElement(
                 'div',

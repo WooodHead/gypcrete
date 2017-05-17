@@ -38,7 +38,8 @@ function BasicRow(_ref) {
     var basic = _ref.basic,
         tag = _ref.tag,
         statusIcon = _ref.statusIcon,
-        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['basic', 'tag', 'statusIcon']);
+        children = _ref.children,
+        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['basic', 'tag', 'statusIcon', 'children']);
 
     return _react2.default.createElement(
         'div',
@@ -53,7 +54,8 @@ function BasicRow(_ref) {
             )
         ),
         tag && (0, _wrapIfNotElement2.default)(tag, { with: _Tag2.default }),
-        statusIcon && (0, _wrapIfNotElement2.default)(statusIcon, { with: 'span' })
+        statusIcon && (0, _wrapIfNotElement2.default)(statusIcon, { with: 'span' }),
+        children
     );
 }
 

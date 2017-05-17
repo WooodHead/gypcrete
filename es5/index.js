@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -24,6 +24,10 @@ var _Tag2 = _interopRequireDefault(_Tag);
 var _Text = require('./Text');
 
 var _Text2 = _interopRequireDefault(_Text);
+
+var _EditableText = require('./EditableText');
+
+var _EditableText2 = _interopRequireDefault(_EditableText);
 
 var _Tooltip = require('./Tooltip');
 
@@ -84,6 +88,7 @@ exports.Icon = _Icon2.default;
 exports.StatusIcon = _StatusIcon2.default;
 exports.Tag = _Tag2.default;
 exports.Text = _Text2.default;
+exports.EditableText = _EditableText2.default;
 exports.Tooltip = _Tooltip2.default;
 exports.AnchoredTooltip = _AnchoredTooltip2.default;
 exports.SwitchIcon = _SwitchIcon2.default;
