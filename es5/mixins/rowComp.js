@@ -41,6 +41,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+exports.getTextLayoutProps = getTextLayoutProps;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -111,6 +113,13 @@ function determineTextAlign(compAlign, hasIcon) {
     }
 }
 
+function getTextLayoutProps(compAlign, hasIcon) {
+    return {
+        align: determineTextAlign(compAlign, hasIcon),
+        noGrow: compAlign === CENTER
+    };
+}
+
 var rowComp = function rowComp() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
         _ref$defaultMinified = _ref.defaultMinified,
@@ -133,12 +142,13 @@ var rowComp = function rowComp() {
                 key: 'getChildContext',
                 value: function getChildContext() {
                     var _props = this.props,
+                        align = _props.align,
                         status = _props.status,
                         statusOptions = _props.statusOptions,
                         errorMsg = _props.errorMsg;
 
 
-                    return { status: status, statusOptions: statusOptions, errorMsg: errorMsg };
+                    return { align: align, status: status, statusOptions: statusOptions, errorMsg: errorMsg };
                 }
             }, {
                 key: 'renderContent',
@@ -152,13 +162,11 @@ var rowComp = function rowComp() {
 
 
                     var textProps = { basic: basic, aside: aside, tag: tag };
-                    var textAlign = determineTextAlign(align, !!icon);
+                    var textLayoutProps = getTextLayoutProps(align, !!icon);
 
                     return [icon && _react2.default.createElement(_Icon2.default, { key: 'comp-icon', type: icon }), _react2.default.createElement(_Text2.default, (0, _extends3.default)({
-                        key: 'comp-text',
-                        align: textAlign,
-                        noGrow: align === CENTER
-                    }, textProps))];
+                        key: 'comp-text'
+                    }, textProps, textLayoutProps))];
                 }
             }, {
                 key: 'render',
@@ -229,7 +237,9 @@ var rowComp = function rowComp() {
             statusOptions: {},
             errorMsg: null
         };
-        RowComp.childContextTypes = (0, _extends3.default)({}, _withStatus.statusPropTypes);
+        RowComp.childContextTypes = (0, _extends3.default)({
+            align: RowComp.propTypes.align
+        }, _withStatus.statusPropTypes);
 
 
         return RowComp;

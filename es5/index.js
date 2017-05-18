@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -77,6 +77,10 @@ var _Switch = require('./Switch');
 
 var _Switch2 = _interopRequireDefault(_Switch);
 
+var _TextInput = require('./TextInput');
+
+var _TextInput2 = _interopRequireDefault(_TextInput);
+
 var _SearchInput = require('./SearchInput');
 
 var _SearchInput2 = _interopRequireDefault(_SearchInput);
@@ -101,4 +105,5 @@ exports.IconButton = _IconButton2.default;
 exports.Checkbox = _Checkbox2.default;
 exports.IconCheckbox = _IconCheckbox2.default;
 exports.Switch = _Switch2.default;
+exports.TextInput = _TextInput2.default;
 exports.SearchInput = _SearchInput2.default;
