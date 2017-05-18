@@ -90,7 +90,7 @@ var StatusIcon = function (_PureComponent) {
     (0, _createClass3.default)(StatusIcon, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.autoToggleStatusIcon(this.props.status);
+            this.autoToggleStatusIcon();
         }
     }, {
         key: 'componentWillReceiveProps',
@@ -99,10 +99,8 @@ var StatusIcon = function (_PureComponent) {
                 this.autoToggleStatusIcon(nextProps.status);
             }
 
-            if (nextProps.autohide !== this.props.autohide) {
-                if (this.state.hideIcon) {
-                    this.setState({ hideIcon: false });
-                }
+            if (!nextProps.autohide && this.state.hideIcon) {
+                this.setState({ hideIcon: false });
             }
         }
     }, {
@@ -166,7 +164,7 @@ var StatusIcon = function (_PureComponent) {
 }(_react.PureComponent);
 
 StatusIcon.propTypes = {
-    status: _propTypes2.default.oneOf((0, _values2.default)(STATUS_CODE)).isRequired,
+    status: _propTypes2.default.oneOf((0, _values2.default)(STATUS_CODE)),
     position: _propTypes2.default.oneOf((0, _values2.default)(STATUS_POSITION)),
     autohide: _propTypes2.default.bool
 };

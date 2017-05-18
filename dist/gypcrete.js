@@ -3543,7 +3543,7 @@ var StatusIcon = function (_PureComponent) {
     __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_createClass___default()(StatusIcon, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            this.autoToggleStatusIcon(this.props.status);
+            this.autoToggleStatusIcon();
         }
     }, {
         key: 'componentWillReceiveProps',
@@ -3552,10 +3552,8 @@ var StatusIcon = function (_PureComponent) {
                 this.autoToggleStatusIcon(nextProps.status);
             }
 
-            if (nextProps.autohide !== this.props.autohide) {
-                if (this.state.hideIcon) {
-                    this.setState({ hideIcon: false });
-                }
+            if (!nextProps.autohide && this.state.hideIcon) {
+                this.setState({ hideIcon: false });
             }
         }
     }, {
@@ -3620,7 +3618,7 @@ var StatusIcon = function (_PureComponent) {
 }(__WEBPACK_IMPORTED_MODULE_6_react__["PureComponent"]);
 
 StatusIcon.propTypes = {
-    status: __WEBPACK_IMPORTED_MODULE_7_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(STATUS_CODE)).isRequired,
+    status: __WEBPACK_IMPORTED_MODULE_7_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(STATUS_CODE)),
     position: __WEBPACK_IMPORTED_MODULE_7_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(STATUS_POSITION)),
     autohide: __WEBPACK_IMPORTED_MODULE_7_prop_types___default.a.bool
 };
@@ -13172,10 +13170,8 @@ var Switch = function (_PureComponent) {
 
     __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_createClass___default()(Switch, [{
         key: 'renderSwitchButton',
-        value: function renderSwitchButton() {
+        value: function renderSwitchButton(inputProps) {
             var _this2 = this;
-
-            var inputProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             var button = __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__SwitchIcon__["a" /* default */], null);
 
@@ -13663,7 +13659,7 @@ function renderToLayer(WrappedComponent) {
             key: 'componentDidMount',
             value: function componentDidMount() {
                 this.createBaseLayer();
-                this.renderComponentToLayer({ withProps: this.props });
+                this.renderComponentToLayer();
             }
         }, {
             key: 'componentWillReceiveProps',
@@ -13673,6 +13669,8 @@ function renderToLayer(WrappedComponent) {
         }, {
             key: 'componentWillUnmount',
             value: function componentWillUnmount() {
+                if (!this.baseLayer) return;
+
                 __WEBPACK_IMPORTED_MODULE_6_react_dom___default.a.unmountComponentAtNode(this.baseLayer);
                 this.removeBaseLayer();
             }
@@ -13688,8 +13686,6 @@ function renderToLayer(WrappedComponent) {
         }, {
             key: 'removeBaseLayer',
             value: function removeBaseLayer() {
-                if (!this.baseLayer) return;
-
                 document.body.removeChild(this.baseLayer);
                 this.baseLayer = null;
             }

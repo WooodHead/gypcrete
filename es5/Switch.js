@@ -86,10 +86,8 @@ var Switch = function (_PureComponent) {
 
     (0, _createClass3.default)(Switch, [{
         key: 'renderSwitchButton',
-        value: function renderSwitchButton() {
+        value: function renderSwitchButton(inputProps) {
             var _this2 = this;
-
-            var inputProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
             var button = _react2.default.createElement(_SwitchIcon2.default, null);
 

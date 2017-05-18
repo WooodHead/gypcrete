@@ -70,7 +70,7 @@ function renderToLayer(WrappedComponent) {
             key: 'componentDidMount',
             value: function componentDidMount() {
                 this.createBaseLayer();
-                this.renderComponentToLayer({ withProps: this.props });
+                this.renderComponentToLayer();
             }
         }, {
             key: 'componentWillReceiveProps',
@@ -80,6 +80,8 @@ function renderToLayer(WrappedComponent) {
         }, {
             key: 'componentWillUnmount',
             value: function componentWillUnmount() {
+                if (!this.baseLayer) return;
+
                 _reactDom2.default.unmountComponentAtNode(this.baseLayer);
                 this.removeBaseLayer();
             }
@@ -95,8 +97,6 @@ function renderToLayer(WrappedComponent) {
         }, {
             key: 'removeBaseLayer',
             value: function removeBaseLayer() {
-                if (!this.baseLayer) return;
-
                 document.body.removeChild(this.baseLayer);
                 this.baseLayer = null;
             }
