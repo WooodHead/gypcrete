@@ -20,6 +20,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _enhancedPropTypes = require('./utils/enhancedPropTypes');
+
+var _enhancedPropTypes2 = _interopRequireDefault(_enhancedPropTypes);
+
 var _icBEM = require('./utils/icBEM');
 
 var _icBEM2 = _interopRequireDefault(_icBEM);
@@ -38,17 +42,26 @@ var rootClass = (0, _icBEM2.default)(_Button.COMPONENT_NAME).modifier('icon-only
 
 function IconButton(_ref) {
     var icon = _ref.icon,
-        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['icon']);
+        color = _ref.color,
+        solid = _ref.solid,
+        buttonProps = (0, _objectWithoutProperties3.default)(_ref, ['icon', 'color', 'solid']);
 
     return _react2.default.createElement(
         _Button2.default,
-        (0, _extends3.default)({ className: rootClass }, otherProps),
+        (0, _extends3.default)({ className: rootClass }, buttonProps),
         _react2.default.createElement(_IconLayout2.default, { icon: icon })
     );
 }
 
 IconButton.propTypes = {
-    icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]).isRequired
+    icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]).isRequired,
+    color: _enhancedPropTypes2.default.isEmpty,
+    solid: _enhancedPropTypes2.default.isEmpty
+};
+
+IconButton.defaultProps = {
+    color: undefined,
+    solid: undefined
 };
 
 exports.default = IconButton;

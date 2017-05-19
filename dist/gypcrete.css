@@ -914,7 +914,7 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-row-comp.gyp-state-active {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 .gyp-row-comp--minified {
@@ -942,11 +942,11 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-button:hover, .gyp-button:focus {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .gyp-button:active {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .gyp-button--blue {
@@ -1009,11 +1009,11 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-button--solid.gyp-button--white:hover, .gyp-button--solid.gyp-button--white:focus {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.02);
 }
 
 .gyp-button--solid.gyp-button--white:active {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.04);
 }
 
 .gyp-button--solid.gyp-button--black {
