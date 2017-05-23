@@ -886,8 +886,8 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+      -ms-flex: 1 1 15rem;
+          flex: 1 1 15rem;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
