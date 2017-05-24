@@ -56,16 +56,18 @@ var filterOutStatusProps = function filterOutStatusProps(props) {
 
 function TextInput(props, _ref) {
     var align = _ref.align;
-    var value = props.value,
+    var onEditEnd = props.onEditEnd,
+        value = props.value,
         defaultValue = props.defaultValue,
         placeholder = props.placeholder,
         disabled = props.disabled,
         onFocus = props.onFocus,
         onBlur = props.onBlur,
         onChange = props.onChange,
+        onKeyDown = props.onKeyDown,
         input = props.input,
         className = props.className,
-        otherProps = (0, _objectWithoutProperties3.default)(props, ['value', 'defaultValue', 'placeholder', 'disabled', 'onFocus', 'onBlur', 'onChange', 'input', 'className']);
+        otherProps = (0, _objectWithoutProperties3.default)(props, ['onEditEnd', 'value', 'defaultValue', 'placeholder', 'disabled', 'onFocus', 'onBlur', 'onChange', 'onKeyDown', 'input', 'className']);
 
 
     var editableTextProps = {

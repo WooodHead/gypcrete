@@ -45,6 +45,10 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var _keycode = require('keycode');
+
+var _keycode2 = _interopRequireDefault(_keycode);
+
 var _prefixClass = require('./utils/prefixClass');
 
 var _prefixClass2 = _interopRequireDefault(_prefixClass);
@@ -90,12 +94,15 @@ var EditableText = function (_PureComponent) {
 
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = EditableText.__proto__ || (0, _getPrototypeOf2.default)(EditableText)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             currentValue: _this.props.value || _this.props.defaultValue || '',
-            focused: false
+            focused: false,
+            lastNotified: 0
         }, _this.handleInputFocus = function (event) {
             _this.setState({ focused: true });
             _this.props.onFocus(event);
         }, _this.handleInputBlur = function (event) {
             _this.setState({ focused: false });
+            _this.notifiyEditEnd(event);
+
             _this.props.onBlur(event);
         }, _this.handleInputChange = function (event) {
             if (!_this.props.value) {
@@ -103,20 +110,61 @@ var EditableText = function (_PureComponent) {
             }
 
             _this.props.onChange(event);
+        }, _this.handleInputKeyDown = function (event) {
+            switch (event.keyCode) {
+                case (0, _keycode2.default)('Enter'):
+                    _this.notifiyEditEnd(event);
+                    break;
+                case (0, _keycode2.default)('Escape'):
+                    _this.notifiyEditEnd(event, { reset: true });
+                    break;
+                default:
+                    break;
+            }
+            _this.props.onKeyDown(event);
         }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
     (0, _createClass3.default)(EditableText, [{
         key: 'componentWillReceiveProps',
         value: function componentWillReceiveProps(nextProps) {
-            if (nextProps.value !== this.props.value) {
+            if (nextProps.value) {
                 this.setState({ currentValue: nextProps.value });
             }
         }
     }, {
+        key: 'focusInputNode',
+        value: function focusInputNode() {
+            this.inputNode.focus();
+        }
+    }, {
+        key: 'notifiyEditEnd',
+        value: function notifiyEditEnd(event) {
+            var _this2 = this;
+
+            var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+                _ref2$reset = _ref2.reset,
+                reset = _ref2$reset === undefined ? false : _ref2$reset;
+
+            var currentTimestamp = Date.now();
+            var timeDiffMilliseconds = currentTimestamp - this.state.lastNotified;
+
+            if (timeDiffMilliseconds < 200) {
+                return;
+            }
+
+            this.props.onEditEnd({
+                reset: reset,
+                value: event.target.value
+            });
+            this.setState({ lastNotified: currentTimestamp }, function () {
+                return _this2.inputNode.blur();
+            });
+        }
+    }, {
         key: 'renderBasicRow',
         value: function renderBasicRow() {
-            var _this2 = this;
+            var _this3 = this;
 
             var _props = this.props,
                 placeholder = _props.placeholder,
@@ -130,8 +178,8 @@ var EditableText = function (_PureComponent) {
                 _BasicRow2.default,
                 { basic: '', className: className },
                 _react2.default.createElement('input', (0, _extends3.default)({
-                    ref: function ref(_ref2) {
-                        _this2.inputNode = _ref2;
+                    ref: function ref(_ref3) {
+                        _this3.inputNode = _ref3;
                     },
                     type: 'text',
                     className: BEM.input,
@@ -140,7 +188,8 @@ var EditableText = function (_PureComponent) {
                     disabled: disabled,
                     onFocus: this.handleInputFocus,
                     onBlur: this.handleInputBlur,
-                    onChange: this.handleInputChange
+                    onChange: this.handleInputChange,
+                    onKeyDown: this.handleInputKeyDown
                 }, extraInputProps))
             );
         }
@@ -148,16 +197,20 @@ var EditableText = function (_PureComponent) {
         key: 'render',
         value: function render() {
             var _props2 = this.props,
+                onEditEnd = _props2.onEditEnd,
                 value = _props2.value,
                 defaultValue = _props2.defaultValue,
                 placeholder = _props2.placeholder,
                 disabled = _props2.disabled,
+                onFocus = _props2.onFocus,
+                onBlur = _props2.onBlur,
                 onChange = _props2.onChange,
+                onKeyDown = _props2.onKeyDown,
                 input = _props2.input,
                 statusIcon = _props2.statusIcon,
                 errorMsg = _props2.errorMsg,
                 className = _props2.className,
-                textProps = (0, _objectWithoutProperties3.default)(_props2, ['value', 'defaultValue', 'placeholder', 'disabled', 'onChange', 'input', 'statusIcon', 'errorMsg', 'className']);
+                textProps = (0, _objectWithoutProperties3.default)(_props2, ['onEditEnd', 'value', 'defaultValue', 'placeholder', 'disabled', 'onFocus', 'onBlur', 'onChange', 'onKeyDown', 'input', 'statusIcon', 'errorMsg', 'className']);
             var _state = this.state,
                 currentValue = _state.currentValue,
                 focused = _state.focused;
@@ -186,6 +239,8 @@ var EditableText = function (_PureComponent) {
 }(_react.PureComponent);
 
 EditableText.propTypes = {
+    onEditEnd: _propTypes2.default.func,
+
     value: _propTypes2.default.string,
     defaultValue: _propTypes2.default.string,
     placeholder: _propTypes2.default.string,
@@ -193,12 +248,14 @@ EditableText.propTypes = {
     onFocus: _propTypes2.default.func,
     onBlur: _propTypes2.default.func,
     onChange: _propTypes2.default.func,
+    onKeyDown: _propTypes2.default.func,
 
     input: _propTypes2.default.object,
     errorMsg: _propTypes2.default.string,
     statusIcon: _propTypes2.default.node
 };
 EditableText.defaultProps = {
+    onEditEnd: function onEditEnd() {},
     value: undefined,
     defaultValue: undefined,
     placeholder: 'Unset',
@@ -206,9 +263,10 @@ EditableText.defaultProps = {
     onFocus: function onFocus() {},
     onBlur: function onBlur() {},
     onChange: function onChange() {},
+    onKeyDown: function onKeyDown() {},
     input: {},
     errorMsg: undefined,
     statusIcon: undefined
 };
-exports.default = (0, _withStatus2.default)()(EditableText);
+exports.default = (0, _withStatus2.default)({ withRef: true })(EditableText);
 exports.PureEditableText = EditableText;

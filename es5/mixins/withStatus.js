@@ -9,6 +9,30 @@ var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
 
+var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
+
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _classCallCheck2 = require('babel-runtime/helpers/classCallCheck');
+
+var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+var _createClass2 = require('babel-runtime/helpers/createClass');
+
+var _createClass3 = _interopRequireDefault(_createClass2);
+
+var _possibleConstructorReturn2 = require('babel-runtime/helpers/possibleConstructorReturn');
+
+var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+var _inherits2 = require('babel-runtime/helpers/inherits');
+
+var _inherits3 = _interopRequireDefault(_inherits2);
+
+var _objectWithoutProperties2 = require('babel-runtime/helpers/objectWithoutProperties');
+
+var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
 var _values = require('babel-runtime/core-js/object/values');
 
 var _values2 = _interopRequireDefault(_values);
@@ -43,28 +67,60 @@ var withStatusPropTypes = exports.withStatusPropTypes = {
 };
 
 var withStatus = function withStatus() {
-    var defaultOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    var _ref$withRef = _ref.withRef,
+        withRef = _ref$withRef === undefined ? false : _ref$withRef,
+        defaultStatusOptions = (0, _objectWithoutProperties3.default)(_ref, ['withRef']);
     return function (WrappedComponent) {
         var componentName = (0, _getComponentName2.default)(WrappedComponent);
 
-        function WithStatus(props, context) {
-            var status = context.status,
-                _context$statusOption = context.statusOptions,
-                statusOptions = _context$statusOption === undefined ? {} : _context$statusOption,
-                errorMsg = context.errorMsg;
+        var WithStatus = function (_Component) {
+            (0, _inherits3.default)(WithStatus, _Component);
+
+            function WithStatus() {
+                (0, _classCallCheck3.default)(this, WithStatus);
+                return (0, _possibleConstructorReturn3.default)(this, (WithStatus.__proto__ || (0, _getPrototypeOf2.default)(WithStatus)).apply(this, arguments));
+            }
+
+            (0, _createClass3.default)(WithStatus, [{
+                key: 'getRenderedComponent',
+                value: function getRenderedComponent() {
+                    return this.renderedComponentRef;
+                }
+            }, {
+                key: 'render',
+                value: function render() {
+                    var _this2 = this;
+
+                    var _context = this.context,
+                        status = _context.status,
+                        _context$statusOption = _context.statusOptions,
+                        statusOptions = _context$statusOption === undefined ? {} : _context$statusOption,
+                        errorMsg = _context.errorMsg;
 
 
-            var statusIcon = status && _react2.default.createElement(_StatusIcon2.default, (0, _extends3.default)({
-                status: status
-            }, defaultOptions, statusOptions));
+                    var statusIcon = status && _react2.default.createElement(_StatusIcon2.default, (0, _extends3.default)({
+                        status: status
+                    }, defaultStatusOptions, statusOptions));
 
-            return _react2.default.createElement(WrappedComponent, (0, _extends3.default)({}, props, {
-                statusIcon: statusIcon,
-                errorMsg: errorMsg }));
-        }
+                    var refProps = !withRef ? {} : {
+                        ref: function ref(_ref2) {
+                            _this2.renderedComponentRef = _ref2;
+                        }
+                    };
+
+                    return _react2.default.createElement(WrappedComponent, (0, _extends3.default)({}, refProps, this.props, {
+                        statusIcon: statusIcon,
+                        errorMsg: errorMsg }));
+                }
+            }]);
+            return WithStatus;
+        }(_react.Component);
+
         WithStatus.displayName = 'withStatus(' + componentName + ')';
-
         WithStatus.contextTypes = (0, _extends3.default)({}, statusPropTypes);
+
 
         return WithStatus;
     };

@@ -238,7 +238,7 @@ var rowComp = function rowComp() {
             errorMsg: null
         };
         RowComp.childContextTypes = (0, _extends3.default)({
-            align: RowComp.propTypes.align
+            align: _propTypes2.default.oneOf((0, _values2.default)(ROW_COMP_ALIGN))
         }, _withStatus.statusPropTypes);
 
 

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -57,6 +57,10 @@ var _TextLabel = require('./TextLabel');
 
 var _TextLabel2 = _interopRequireDefault(_TextLabel);
 
+var _EditableTextLabel = require('./EditableTextLabel');
+
+var _EditableTextLabel2 = _interopRequireDefault(_EditableTextLabel);
+
 var _Button = require('./Button');
 
 var _Button2 = _interopRequireDefault(_Button);
@@ -100,6 +104,7 @@ exports.FlexCell = _FlexCell2.default;
 exports.IconLayout = _IconLayout2.default;
 exports.TextEllipsis = _TextEllipsis2.default;
 exports.TextLabel = _TextLabel2.default;
+exports.EditableTextLabel = _EditableTextLabel2.default;
 exports.Button = _Button2.default;
 exports.IconButton = _IconButton2.default;
 exports.Checkbox = _Checkbox2.default;
