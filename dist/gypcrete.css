@@ -1155,3 +1155,12 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   -ms-flex-line-pack: start;
       align-content: flex-start;
 }
+.gyp-infinite-scroll--overflow {
+  overflow: auto;
+}
+
+.gyp-infinite-scroll__footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}

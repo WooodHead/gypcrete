@@ -151,6 +151,18 @@ var rowComp = function rowComp() {
                     return { align: align, status: status, statusOptions: statusOptions, errorMsg: errorMsg };
                 }
             }, {
+                key: 'renderIconElement',
+                value: function renderIconElement() {
+                    var icon = this.props.icon;
+
+
+                    if (!icon) {
+                        return null;
+                    }
+
+                    return (0, _react.isValidElement)(icon) ? (0, _react.cloneElement)(icon, { key: 'comp-icon' }) : _react2.default.createElement(_Icon2.default, { key: 'comp-icon', type: icon });
+                }
+            }, {
                 key: 'renderContent',
                 value: function renderContent() {
                     var _props2 = this.props,
@@ -160,11 +172,12 @@ var rowComp = function rowComp() {
                         aside = _props2.aside,
                         tag = _props2.tag;
 
-
                     var textProps = { basic: basic, aside: aside, tag: tag };
                     var textLayoutProps = getTextLayoutProps(align, !!icon);
 
-                    return [icon && _react2.default.createElement(_Icon2.default, { key: 'comp-icon', type: icon }), _react2.default.createElement(_Text2.default, (0, _extends3.default)({
+                    var iconElement = this.renderIconElement();
+
+                    return [iconElement, _react2.default.createElement(_Text2.default, (0, _extends3.default)({
                         key: 'comp-text'
                     }, textProps, textLayoutProps))];
                 }
@@ -210,7 +223,7 @@ var rowComp = function rowComp() {
             minified: _propTypes2.default.bool,
 
             align: _propTypes2.default.oneOf((0, _values2.default)(ROW_COMP_ALIGN)),
-            icon: _propTypes2.default.string,
+            icon: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]),
             basic: _propTypes2.default.node,
             aside: _propTypes2.default.node,
             tag: _propTypes2.default.node,

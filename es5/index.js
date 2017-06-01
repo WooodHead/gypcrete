@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -89,6 +89,10 @@ var _SearchInput = require('./SearchInput');
 
 var _SearchInput2 = _interopRequireDefault(_SearchInput);
 
+var _InfiniteScroll = require('./InfiniteScroll');
+
+var _InfiniteScroll2 = _interopRequireDefault(_InfiniteScroll);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.BasicRow = _BasicRow2.default;
@@ -112,3 +116,4 @@ exports.IconCheckbox = _IconCheckbox2.default;
 exports.Switch = _Switch2.default;
 exports.TextInput = _TextInput2.default;
 exports.SearchInput = _SearchInput2.default;
+exports.InfiniteScroll = _InfiniteScroll2.default;
