@@ -29,7 +29,7 @@ function Tag(_ref) {
     var className = _ref.className,
         children = _ref.children;
 
-    var rootClass = (0, _classnames2.default)('' + ROOT_BEM, className);
+    var rootClass = (0, _classnames2.default)('' + ROOT_BEM.toString(), className);
 
     return _react2.default.createElement(
         'span',

@@ -21,14 +21,14 @@ var _createClass2 = require('babel-runtime/helpers/createClass');
 
 var _createClass3 = _interopRequireDefault(_createClass2);
 
+var _isNonEmptyString = require('./isNonEmptyString');
+
+var _isNonEmptyString2 = _interopRequireDefault(_isNonEmptyString);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var ELEMENT_SEPARATOR = '__';
 var MODIFIER_SEPARATOR = '--';
-
-function stringNotEmpty(string) {
-    return typeof string === 'string' && string.length;
-}
 
 var BEMFactory = exports.BEMFactory = function () {
     function BEMFactory() {
@@ -57,7 +57,7 @@ var BEMFactory = exports.BEMFactory = function () {
     (0, _createClass3.default)(BEMFactory, [{
         key: 'element',
         value: function element(elementIdentifier) {
-            if (stringNotEmpty(elementIdentifier)) {
+            if ((0, _isNonEmptyString2.default)(elementIdentifier)) {
                 return new BEMFactory((0, _extends3.default)({}, this.toHash(), {
                     element: elementIdentifier
                 }));
@@ -69,7 +69,7 @@ var BEMFactory = exports.BEMFactory = function () {
         value: function modifier(modifierIdentifier) {
             var isOn = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
 
-            if (isOn && stringNotEmpty(modifierIdentifier)) {
+            if (isOn && (0, _isNonEmptyString2.default)(modifierIdentifier)) {
                 return new BEMFactory((0, _extends3.default)({}, this.toHash(), {
                     modifiers: [].concat((0, _toConsumableArray3.default)(this._modifiers), [modifierIdentifier])
                 }));
@@ -79,7 +79,7 @@ var BEMFactory = exports.BEMFactory = function () {
     }, {
         key: 'add',
         value: function add(className) {
-            if (stringNotEmpty(className)) {
+            if ((0, _isNonEmptyString2.default)(className)) {
                 return new BEMFactory((0, _extends3.default)({}, this.toHash(), {
                     nonBemClasses: [].concat((0, _toConsumableArray3.default)(this._nonBemClasses), [className])
                 }));
@@ -118,6 +118,11 @@ var BEMFactory = exports.BEMFactory = function () {
                 modifiers: this._modifiers.slice(0),
                 nonBemClasses: this._nonBemClasses.slice(0)
             };
+        }
+    }, {
+        key: 'valueOf',
+        value: function valueOf() {
+            return this.toString();
         }
     }]);
     return BEMFactory;
