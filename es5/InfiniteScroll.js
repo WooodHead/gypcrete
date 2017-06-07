@@ -5,6 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.BEM = undefined;
 
+var _values = require('babel-runtime/core-js/object/values');
+
+var _values2 = _interopRequireDefault(_values);
+
 var _extends2 = require('babel-runtime/helpers/extends');
 
 var _extends3 = _interopRequireDefault(_extends2);
@@ -78,6 +82,11 @@ var BEM = exports.BEM = {
     footer: ROOT_BEM.element('footer')
 };
 
+var FILL_SPACE_TYPE = {
+    AUTO: 'auto',
+    MANUAL: 'manual'
+};
+
 var InfiniteScroll = function (_PureComponent) {
     (0, _inherits3.default)(InfiniteScroll, _PureComponent);
 
@@ -92,70 +101,96 @@ var InfiniteScroll = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InfiniteScroll.__proto__ || (0, _getPrototypeOf2.default)(InfiniteScroll)).call.apply(_ref, [this].concat(args))), _this), _this.getRemainingBottomOffset = function () {
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = InfiniteScroll.__proto__ || (0, _getPrototypeOf2.default)(InfiniteScroll)).call.apply(_ref, [this].concat(args))), _this), _this.getScrollNodeHeight = function () {
             var scrollNode = _this.scrollNode;
             var usePageAsContainer = _this.props.usePageAsContainer;
 
 
             if (usePageAsContainer) {
-                var windowBodyElement = document.documentElement || document.body.parentNode || document.body;
-
                 var scrollNodeOffset = (0, _documentOffset2.default)(scrollNode) || {};
                 var scrollNodeTopOffset = scrollNodeOffset.top || 0;
 
-                var totalScrollHeight = scrollNodeTopOffset + scrollNode.offsetHeight;
-                var scrollTop = window.pageYOffset || windowBodyElement.scrollTop;
-
-                return totalScrollHeight - (scrollTop + window.innerHeight);
+                return scrollNodeTopOffset + scrollNode.offsetHeight;
             }
 
-            var parentNode = _this.scrollNode.parentNode;
+            return scrollNode.scrollHeight;
+        }, _this.getContainerHeight = function () {
+            var usePageAsContainer = _this.props.usePageAsContainer;
 
-            return scrollNode.scrollHeight - (parentNode.scrollTop + parentNode.clientHeight);
-        }, _this.handleScrollListener = function (event) {
+
+            if (usePageAsContainer) {
+                return window.innerHeight;
+            }
+
+            return _this.scrollNode.parentNode.clientHeight;
+        }, _this.getContainerScrollTop = function () {
+            var usePageAsContainer = _this.props.usePageAsContainer;
+
+
+            if (usePageAsContainer) {
+                var windowBodyElement = document.documentElement || document.body.parentNode || document.body;
+                return window.pageYOffset || windowBodyElement.scrollTop;
+            }
+
+            return _this.scrollNode.parentNode.scrollTop;
+        }, _this.getRemainingBottomOffset = function () {
+            var scrollNodeHeight = _this.getScrollNodeHeight();
+            var containerHeight = _this.getContainerHeight();
+            var containerScrollTop = _this.getContainerScrollTop();
+
+            return scrollNodeHeight - (containerScrollTop + containerHeight);
+        }, _this.loadMoreToFillSpace = function (event) {
             var _this$props = _this.props,
                 onLoadMore = _this$props.onLoadMore,
-                threshold = _this$props.threshold,
                 hasMore = _this$props.hasMore,
-                isLoading = _this$props.isLoading;
+                isLoading = _this$props.isLoading,
+                fillSpace = _this$props.fillSpace;
+
+
+            if (!isLoading && hasMore && fillSpace === FILL_SPACE_TYPE.AUTO) {
+                var scrollNodeHeight = _this.getScrollNodeHeight();
+                var containerHeight = _this.getContainerHeight();
+                var idealContainerHeight = 2 * containerHeight;
+
+                if (scrollNodeHeight <= idealContainerHeight) {
+                    onLoadMore(event);
+                }
+            }
+        }, _this.handleScrollListener = function (event) {
+            var _this$props2 = _this.props,
+                onLoadMore = _this$props2.onLoadMore,
+                threshold = _this$props2.threshold,
+                hasMore = _this$props2.hasMore,
+                isLoading = _this$props2.isLoading;
 
             var remainingBottomOffset = _this.getRemainingBottomOffset();
 
-            if (!isLoading && hasMore && threshold > remainingBottomOffset && typeof onLoadMore === 'function') {
+            if (!isLoading && hasMore && threshold > remainingBottomOffset) {
                 onLoadMore(event);
             }
         }, _this.attachScrollListener = function () {
             var usePageAsContainer = _this.props.usePageAsContainer;
 
-            var scrollContainer = usePageAsContainer ? window : _this.scrollNode.parentNode;
+            _this.scrollContainer = usePageAsContainer ? window : _this.scrollNode.parentNode;
 
-            scrollContainer.addEventListener('scroll', _this.handleScrollListener);
+            _this.scrollContainer.addEventListener('scroll', _this.handleScrollListener);
         }, _this.detachScrollListener = function () {
-            var usePageAsContainer = _this.props.usePageAsContainer;
-
-            var scrollContainer = usePageAsContainer ? window : _this.scrollNode.parentNode;
-
-            scrollContainer.removeEventListener('scroll', _this.handleScrollListener);
+            if (_this.scrollContainer) {
+                _this.scrollContainer.removeEventListener('scroll', _this.handleScrollListener);
+            }
         }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
     (0, _createClass3.default)(InfiniteScroll, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            if (!this.props.disabled) {
-                this.attachScrollListener();
-            }
+            this.attachScrollListener();
+            this.loadMoreToFillSpace();
         }
     }, {
         key: 'componentDidUpdate',
-        value: function componentDidUpdate(prevProps) {
-            if (this.props.disabled !== prevProps.disabled) {
-                if (this.props.disabled) {
-                    this.detachScrollListener();
-                } else {
-                    this.attachScrollListener();
-                }
-            }
+        value: function componentDidUpdate() {
+            this.loadMoreToFillSpace();
         }
     }, {
         key: 'componentWillUnmount',
@@ -234,15 +269,15 @@ var InfiniteScroll = function (_PureComponent) {
                 threshold = _props2.threshold,
                 isLoading = _props2.isLoading,
                 hasMore = _props2.hasMore,
-                disabled = _props2.disabled,
                 usePageAsContainer = _props2.usePageAsContainer,
+                fillSpace = _props2.fillSpace,
                 loadingLabel = _props2.loadingLabel,
                 showMoreButton = _props2.showMoreButton,
                 noNewestButton = _props2.noNewestButton,
                 children = _props2.children,
                 className = _props2.className,
                 style = _props2.style,
-                rootProps = (0, _objectWithoutProperties3.default)(_props2, ['onLoadMore', 'threshold', 'isLoading', 'hasMore', 'disabled', 'usePageAsContainer', 'loadingLabel', 'showMoreButton', 'noNewestButton', 'children', 'className', 'style']);
+                rootProps = (0, _objectWithoutProperties3.default)(_props2, ['onLoadMore', 'threshold', 'isLoading', 'hasMore', 'usePageAsContainer', 'fillSpace', 'loadingLabel', 'showMoreButton', 'noNewestButton', 'children', 'className', 'style']);
 
             var rootClassName = (0, _classnames2.default)('' + BEM.root, className);
 
@@ -254,7 +289,7 @@ var InfiniteScroll = function (_PureComponent) {
                     },
                     className: rootClassName }),
                 children,
-                !disabled && this.renderFooter()
+                this.renderFooter()
             );
         }
     }]);
@@ -266,19 +301,20 @@ InfiniteScroll.propTypes = {
     threshold: _propTypes2.default.number,
     isLoading: _propTypes2.default.bool,
     hasMore: _propTypes2.default.bool,
-    disabled: _propTypes2.default.bool,
     usePageAsContainer: _propTypes2.default.bool,
+    fillSpace: _propTypes2.default.oneOf((0, _values2.default)(FILL_SPACE_TYPE)),
 
     loadingLabel: _propTypes2.default.node,
     showMoreButton: _propTypes2.default.node,
     noNewestButton: _propTypes2.default.node
 };
 InfiniteScroll.defaultProps = {
+    onLoadMore: function onLoadMore() {},
     threshold: 100,
     isLoading: false,
     hasMore: true,
-    disabled: false,
     usePageAsContainer: false,
+    fillSpace: FILL_SPACE_TYPE.MANUAL,
 
     loadingLabel: null,
     showMoreButton: null,
