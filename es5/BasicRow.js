@@ -41,6 +41,10 @@ function BasicRow(_ref) {
         children = _ref.children,
         otherProps = (0, _objectWithoutProperties3.default)(_ref, ['basic', 'tag', 'statusIcon', 'children']);
 
+    if (!basic) {
+        return null;
+    }
+
     return _react2.default.createElement(
         'div',
         otherProps,
@@ -60,14 +64,15 @@ function BasicRow(_ref) {
 }
 
 BasicRow.propTypes = {
-    basic: _propTypes2.default.node.isRequired,
+    basic: _propTypes2.default.node,
     tag: _propTypes2.default.node,
     statusIcon: _propTypes2.default.node
 };
 
 BasicRow.defaultProps = {
-    tag: null,
-    statusIcon: null
+    basic: undefined,
+    tag: undefined,
+    statusIcon: undefined
 };
 
 exports.default = BasicRow;

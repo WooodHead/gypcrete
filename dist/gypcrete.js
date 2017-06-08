@@ -2298,6 +2298,7 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
 
 
+
 var COMPONENT_NAME = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7__utils_prefixClass__["a" /* default */])('icon');
 var ROOT_BEM = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils_icBEM__["a" /* default */])(COMPONENT_NAME);
 
@@ -2314,9 +2315,13 @@ function Icon(_ref) {
         className = _ref.className,
         otherProps = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_objectWithoutProperties___default()(_ref, ['type', 'color', 'large', 'spinning', 'className']);
 
-    var bemClass = ROOT_BEM.modifier(color, !!color).modifier('large', large).modifier('spin', spinning);
+    var bemClass = ROOT_BEM.modifier('large', large).modifier('spin', spinning);
 
-    var rootClassName = __WEBPACK_IMPORTED_MODULE_5_classnames___default()(className, '' + bemClass, 'gyp-icon-' + type);
+    if (color) {
+        bemClass = bemClass.modifier(color);
+    }
+
+    var rootClassName = __WEBPACK_IMPORTED_MODULE_5_classnames___default()(className, bemClass.toString(), 'gyp-icon-' + type);
 
     return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement('span', __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({
         className: rootClassName,
@@ -2332,7 +2337,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-    color: null,
+    color: undefined,
     large: false,
     spinning: false
 };
@@ -3413,6 +3418,7 @@ module.exports = reactProdInvariant;
 
 
 
+
 var LOADING = 'loading';
 var SUCCESS = 'success';
 var ERROR = 'error';
@@ -3430,22 +3436,16 @@ var ICON_HIDE_TIMEOUT = 2 * 1000;
 var StatusIcon = function (_PureComponent) {
     __WEBPACK_IMPORTED_MODULE_5_babel_runtime_helpers_inherits___default()(StatusIcon, _PureComponent);
 
-    function StatusIcon() {
-        var _ref;
-
+    function StatusIcon(props) {
         __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_classCallCheck___default()(this, StatusIcon);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        var _this = __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = StatusIcon.__proto__ || __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_get_prototype_of___default()(StatusIcon)).call.apply(_ref, [this].concat(args)));
-
-        _this.autoHideTimeout = null;
+        var _this = __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_possibleConstructorReturn___default()(this, (StatusIcon.__proto__ || __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_object_get_prototype_of___default()(StatusIcon)).call(this, props));
 
         _this.state = {
             hideIcon: false
         };
+
+        _this.hideIconTimeout = null;
         return _this;
     }
 
@@ -3532,7 +3532,7 @@ StatusIcon.propTypes = {
     autohide: __WEBPACK_IMPORTED_MODULE_7_prop_types___default.a.bool
 };
 StatusIcon.defaultProps = {
-    status: null,
+    status: undefined,
     position: INLINE,
     autohide: true
 };
@@ -6079,12 +6079,18 @@ module.exports = canDefineProperty;
 
 
 
+
+
 function BasicRow(_ref) {
     var basic = _ref.basic,
         tag = _ref.tag,
         statusIcon = _ref.statusIcon,
         children = _ref.children,
         otherProps = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_objectWithoutProperties___default()(_ref, ['basic', 'tag', 'statusIcon', 'children']);
+
+    if (!basic) {
+        return null;
+    }
 
     return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(
         'div',
@@ -6105,14 +6111,15 @@ function BasicRow(_ref) {
 }
 
 BasicRow.propTypes = {
-    basic: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node.isRequired,
+    basic: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node,
     tag: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node,
     statusIcon: __WEBPACK_IMPORTED_MODULE_2_prop_types___default.a.node
 };
 
 BasicRow.defaultProps = {
-    tag: null,
-    statusIcon: null
+    basic: undefined,
+    tag: undefined,
+    statusIcon: undefined
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (BasicRow);
@@ -6513,6 +6520,8 @@ EditableText.defaultProps = {
 
 
 
+
+
 var COMPONENT_NAME = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_11__utils_prefixClass__["a" /* default */])('text');
 var ROOT_BEM = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_10__utils_icBEM__["a" /* default */])(COMPONENT_NAME);
 
@@ -6548,17 +6557,11 @@ var Text = function (_PureComponent) {
 
             var basicRowProps = { basic: basic, tag: tag, statusIcon: statusIcon };
 
-            if (!(basic || basicRow)) {
-                return null;
-            }
-
-            if (__WEBPACK_IMPORTED_MODULE_7_react___default.a.isValidElement(basicRow)) {
+            if (basicRow && __WEBPACK_IMPORTED_MODULE_7_react___default.a.isValidElement(basicRow)) {
                 return __WEBPACK_IMPORTED_MODULE_7_react___default.a.cloneElement(basicRow, basicRowProps);
             }
 
-            return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */], __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({
-                className: __WEBPACK_IMPORTED_MODULE_9_classnames___default()('' + BEM.row, '' + BEM.basic)
-            }, basicRowProps));
+            return null;
         }
     }, {
         key: 'renderAsideRow',
@@ -6575,7 +6578,7 @@ var Text = function (_PureComponent) {
 
             return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
                 'div',
-                { className: __WEBPACK_IMPORTED_MODULE_9_classnames___default()('' + BEM.row, '' + BEM.aside) },
+                { className: __WEBPACK_IMPORTED_MODULE_9_classnames___default()(BEM.row.toString(), BEM.aside.toString()) },
                 displayText
             );
         }
@@ -6590,7 +6593,7 @@ var Text = function (_PureComponent) {
 
             var bemClass = BEM.root.modifier(align).modifier('no-grow', noGrow);
 
-            var rootClassName = __WEBPACK_IMPORTED_MODULE_9_classnames___default()('' + bemClass, className);
+            var rootClassName = __WEBPACK_IMPORTED_MODULE_9_classnames___default()(bemClass.toString(), className);
 
             return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
                 'div',
@@ -6608,20 +6611,18 @@ Text.propTypes = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___def
     align: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(TEXT_ALIGN)),
     aside: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.node,
     basicRow: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.element,
-    noGrow: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool,
+    noGrow: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool
 
-    errorMsg: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.string
-}, __WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */].propTypes, {
-    basic: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.node
-});
-Text.defaultProps = {
+}, __WEBPACK_IMPORTED_MODULE_12__mixins_withStatus__["c" /* withStatusPropTypes */], __WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */].propTypes);
+Text.defaultProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({
     align: LEFT,
-    aside: null,
-    basicRow: null,
+    aside: undefined,
+    basicRow: __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */], {
+        className: __WEBPACK_IMPORTED_MODULE_9_classnames___default()(BEM.row.toString(), BEM.basic.toString()) }),
     noGrow: false,
-    errorMsg: null,
-    basic: null
-};
+    errorMsg: undefined,
+    statusIcon: undefined
+}, __WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */].defaultProps);
 
 
 /* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__mixins_withStatus__["b" /* default */])()(Text));
@@ -9399,6 +9400,7 @@ function isNonEmptyString(checkingString) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_defineProperty__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
+
 
 
 
@@ -14530,7 +14532,7 @@ var EnhancedPropTypes = {
         if (props[propName]) {
             return new Error("<" + componentName + "> must not contains " + propName + ".");
         }
-        return null;
+        return undefined;
     }
 };
 
@@ -14542,6 +14544,7 @@ var EnhancedPropTypes = {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__prefixClass__ = __webpack_require__(9);
+
 
 
 function prefixState(state) {
@@ -14561,14 +14564,14 @@ function prefixState(state) {
 "use strict";
 
 function randId() {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      _ref$length = _ref.length,
-      length = _ref$length === undefined ? 10 : _ref$length,
-      _ref$prefix = _ref.prefix,
-      prefix = _ref$prefix === undefined ? 'node' : _ref$prefix;
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+        _ref$length = _ref.length,
+        length = _ref$length === undefined ? 10 : _ref$length,
+        _ref$prefix = _ref.prefix,
+        prefix = _ref$prefix === undefined ? 'node' : _ref$prefix;
 
-  var randHash = Math.random().toString(16).substr(2, length);
-  return prefix + '-' + randHash;
+    var randHash = Math.random().toString(16).substr(2, length);
+    return prefix + '-' + randHash;
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (randId);

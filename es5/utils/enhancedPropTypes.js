@@ -10,7 +10,7 @@ var EnhancedPropTypes = {
         if (props[propName]) {
             return new Error("<" + componentName + "> must not contains " + propName + ".");
         }
-        return null;
+        return undefined;
     }
 };
 

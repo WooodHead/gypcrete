@@ -68,22 +68,16 @@ var ICON_HIDE_TIMEOUT = 2 * 1000;
 var StatusIcon = function (_PureComponent) {
     (0, _inherits3.default)(StatusIcon, _PureComponent);
 
-    function StatusIcon() {
-        var _ref;
-
+    function StatusIcon(props) {
         (0, _classCallCheck3.default)(this, StatusIcon);
 
-        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-        }
-
-        var _this = (0, _possibleConstructorReturn3.default)(this, (_ref = StatusIcon.__proto__ || (0, _getPrototypeOf2.default)(StatusIcon)).call.apply(_ref, [this].concat(args)));
-
-        _this.autoHideTimeout = null;
+        var _this = (0, _possibleConstructorReturn3.default)(this, (StatusIcon.__proto__ || (0, _getPrototypeOf2.default)(StatusIcon)).call(this, props));
 
         _this.state = {
             hideIcon: false
         };
+
+        _this.hideIconTimeout = null;
         return _this;
     }
 
@@ -169,7 +163,7 @@ StatusIcon.propTypes = {
     autohide: _propTypes2.default.bool
 };
 StatusIcon.defaultProps = {
-    status: null,
+    status: undefined,
     position: INLINE,
     autohide: true
 };

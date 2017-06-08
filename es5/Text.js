@@ -97,17 +97,11 @@ var Text = function (_PureComponent) {
 
             var basicRowProps = { basic: basic, tag: tag, statusIcon: statusIcon };
 
-            if (!(basic || basicRow)) {
-                return null;
-            }
-
-            if (_react2.default.isValidElement(basicRow)) {
+            if (basicRow && _react2.default.isValidElement(basicRow)) {
                 return _react2.default.cloneElement(basicRow, basicRowProps);
             }
 
-            return _react2.default.createElement(_BasicRow2.default, (0, _extends3.default)({
-                className: (0, _classnames2.default)('' + BEM.row, '' + BEM.basic)
-            }, basicRowProps));
+            return null;
         }
     }, {
         key: 'renderAsideRow',
@@ -124,7 +118,7 @@ var Text = function (_PureComponent) {
 
             return _react2.default.createElement(
                 'div',
-                { className: (0, _classnames2.default)('' + BEM.row, '' + BEM.aside) },
+                { className: (0, _classnames2.default)(BEM.row.toString(), BEM.aside.toString()) },
                 displayText
             );
         }
@@ -139,7 +133,7 @@ var Text = function (_PureComponent) {
 
             var bemClass = BEM.root.modifier(align).modifier('no-grow', noGrow);
 
-            var rootClassName = (0, _classnames2.default)('' + bemClass, className);
+            var rootClassName = (0, _classnames2.default)(bemClass.toString(), className);
 
             return _react2.default.createElement(
                 'div',
@@ -156,19 +150,17 @@ Text.propTypes = (0, _extends3.default)({
     align: _propTypes2.default.oneOf((0, _values2.default)(TEXT_ALIGN)),
     aside: _propTypes2.default.node,
     basicRow: _propTypes2.default.element,
-    noGrow: _propTypes2.default.bool,
+    noGrow: _propTypes2.default.bool
 
-    errorMsg: _propTypes2.default.string
-}, _BasicRow2.default.propTypes, {
-    basic: _propTypes2.default.node
-});
-Text.defaultProps = {
+}, _withStatus.withStatusPropTypes, _BasicRow2.default.propTypes);
+Text.defaultProps = (0, _extends3.default)({
     align: LEFT,
-    aside: null,
-    basicRow: null,
+    aside: undefined,
+    basicRow: _react2.default.createElement(_BasicRow2.default, {
+        className: (0, _classnames2.default)(BEM.row.toString(), BEM.basic.toString()) }),
     noGrow: false,
-    errorMsg: null,
-    basic: null
-};
+    errorMsg: undefined,
+    statusIcon: undefined
+}, _BasicRow2.default.defaultProps);
 exports.default = (0, _withStatus2.default)()(Text);
 exports.PureText = Text;

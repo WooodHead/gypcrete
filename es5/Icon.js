@@ -55,9 +55,13 @@ function Icon(_ref) {
         className = _ref.className,
         otherProps = (0, _objectWithoutProperties3.default)(_ref, ['type', 'color', 'large', 'spinning', 'className']);
 
-    var bemClass = ROOT_BEM.modifier(color, !!color).modifier('large', large).modifier('spin', spinning);
+    var bemClass = ROOT_BEM.modifier('large', large).modifier('spin', spinning);
 
-    var rootClassName = (0, _classnames2.default)(className, '' + bemClass, 'gyp-icon-' + type);
+    if (color) {
+        bemClass = bemClass.modifier(color);
+    }
+
+    var rootClassName = (0, _classnames2.default)(className, bemClass.toString(), 'gyp-icon-' + type);
 
     return _react2.default.createElement('span', (0, _extends3.default)({
         className: rootClassName,
@@ -73,7 +77,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-    color: null,
+    color: undefined,
     large: false,
     spinning: false
 };
