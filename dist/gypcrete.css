@@ -312,11 +312,6 @@ body {
 .gyp-state-highlight .gyp-state-error .gyp-tag {
   color: #e63917;
 }
-.gyp-text-ellipsis {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
 @charset "UTF-8";
 @font-face {
   font-family: "gyp-icon";
@@ -881,6 +876,11 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
 }
+.gyp-text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .gyp-row-comp {
   min-height: 3rem;
   font-size: 1rem;
@@ -891,8 +891,8 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 15rem;
-          flex: 1 1 15rem;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;

@@ -24,10 +24,6 @@ var _Tag = require('./Tag');
 
 var _Tag2 = _interopRequireDefault(_Tag);
 
-var _TextEllipsis = require('./TextEllipsis');
-
-var _TextEllipsis2 = _interopRequireDefault(_TextEllipsis);
-
 var _wrapIfNotElement = require('./utils/wrapIfNotElement');
 
 var _wrapIfNotElement2 = _interopRequireDefault(_wrapIfNotElement);
@@ -51,11 +47,7 @@ function BasicRow(_ref) {
         _react2.default.createElement(
             _FlexCell2.default,
             { shrink: true },
-            _react2.default.createElement(
-                _TextEllipsis2.default,
-                null,
-                basic
-            )
+            basic
         ),
         tag && (0, _wrapIfNotElement2.default)(tag, { with: _Tag2.default }),
         statusIcon && (0, _wrapIfNotElement2.default)(statusIcon, { with: 'span' }),
