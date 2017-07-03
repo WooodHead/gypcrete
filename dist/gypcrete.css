@@ -750,6 +750,10 @@ body {
   color: rgba(0, 0, 0, 0.3);
 }
 
+.gyp-editable-text ::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .gyp-editable-text :-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -1100,6 +1104,10 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-search-input ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-search-input ::-moz-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
