@@ -320,6 +320,7 @@ body {
   color: #3399ff;
   opacity: 1;
   will-change: opacity;
+  white-space: pre-wrap;
 }
 
 .gyp-editable-basic-row__input {
@@ -343,7 +344,11 @@ body {
 
 .gyp-editable-basic-row__input:focus {
   opacity: 1;
-  box-shadow: 0 1px 0 #3399ff, 0 -1px 0 #3399ff inset;
+}
+
+textarea.gyp-editable-basic-row__input {
+  height: calc(100% + 2px);
+  overflow: hidden;
 }
 
 .gyp-editable-basic-row ::-webkit-input-placeholder {
@@ -365,6 +370,10 @@ body {
 .gyp-editable-basic-row--focused .gyp-editable-basic-row__basic-label,
 .gyp-editable-basic-row--disabled .gyp-editable-basic-row__basic-label {
   opacity: 0;
+}
+
+.gyp-editable-basic-row--focused {
+  box-shadow: 0 -2px 0 #3399ff inset;
 }
 
 .gyp-text--center .gyp-editable-basic-row__input {

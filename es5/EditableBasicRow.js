@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.BEM = exports.COMPONENT_NAME = undefined;
+exports.ROW_INPUT_TAGS = exports.BEM = exports.COMPONENT_NAME = undefined;
+
+var _values = require('babel-runtime/core-js/object/values');
+
+var _values2 = _interopRequireDefault(_values);
 
 var _extends2 = require('babel-runtime/helpers/extends');
 
@@ -68,6 +72,13 @@ var BEM = exports.BEM = {
     basicLabel: ROOT_BEM.element('basic-label')
 };
 
+var TAG_INPUT = 'input';
+var TAG_TEXTAREA = 'textarea';
+var ROW_INPUT_TAGS = exports.ROW_INPUT_TAGS = {
+    INPUT: TAG_INPUT,
+    TEXTAREA: TAG_TEXTAREA
+};
+
 var EditableBasicRow = function (_PureComponent) {
     (0, _inherits3.default)(EditableBasicRow, _PureComponent);
 
@@ -117,18 +128,19 @@ var EditableBasicRow = function (_PureComponent) {
             var _this2 = this;
 
             var _props = this.props,
-                status = _props.status,
+                InputTag = _props.inputTag,
                 value = _props.value,
                 defaultValue = _props.defaultValue,
                 readOnly = _props.readOnly,
                 disabled = _props.disabled,
+                status = _props.status,
                 placeholder = _props.placeholder,
                 onChange = _props.onChange,
                 onFocus = _props.onFocus,
                 onBlur = _props.onBlur,
                 inputProps = _props.input,
                 className = _props.className,
-                rowProps = (0, _objectWithoutProperties3.default)(_props, ['status', 'value', 'defaultValue', 'readOnly', 'disabled', 'placeholder', 'onChange', 'onFocus', 'onBlur', 'input', 'className']);
+                rowProps = (0, _objectWithoutProperties3.default)(_props, ['inputTag', 'value', 'defaultValue', 'readOnly', 'disabled', 'status', 'placeholder', 'onChange', 'onFocus', 'onBlur', 'input', 'className']);
             var _state = this.state,
                 currentValue = _state.currentValue,
                 focused = _state.focused;
@@ -137,12 +149,14 @@ var EditableBasicRow = function (_PureComponent) {
             var bemClass = BEM.root.modifier('empty', !currentValue).modifier('focused', focused).modifier('disabled', disabled);
             var rootClassName = (0, _classnames2.default)(bemClass.toString(), className);
 
+            var inputType = InputTag === TAG_INPUT ? 'text' : undefined;
             var inputTabIndex = readOnly || disabled ? -1 : undefined;
 
             var basicLabel = _react2.default.createElement(
                 'span',
                 { className: BEM.basicLabel },
-                currentValue || placeholder
+                currentValue || placeholder,
+                InputTag === TAG_TEXTAREA && '\n'
             );
 
             return _react2.default.createElement(
@@ -150,11 +164,11 @@ var EditableBasicRow = function (_PureComponent) {
                 (0, _extends3.default)({}, rowProps, {
                     basic: basicLabel,
                     className: rootClassName }),
-                _react2.default.createElement('input', (0, _extends3.default)({
+                _react2.default.createElement(InputTag, (0, _extends3.default)({
                     ref: function ref(_ref2) {
                         _this2.inputNode = _ref2;
                     },
-                    type: 'text',
+                    type: inputType,
                     value: currentValue,
                     placeholder: placeholder,
                     className: BEM.input.toString(),
@@ -172,11 +186,12 @@ var EditableBasicRow = function (_PureComponent) {
 }(_react.PureComponent);
 
 EditableBasicRow.propTypes = {
-    status: _propTypes2.default.string,
+    inputTag: _propTypes2.default.oneOf((0, _values2.default)(ROW_INPUT_TAGS)),
     value: _propTypes2.default.string,
     defaultValue: _propTypes2.default.string,
     readOnly: _propTypes2.default.bool,
     disabled: _propTypes2.default.bool,
+    status: _propTypes2.default.string,
 
     placeholder: _propTypes2.default.string,
     onChange: _propTypes2.default.func,
@@ -185,11 +200,12 @@ EditableBasicRow.propTypes = {
 
     input: _propTypes2.default.object };
 EditableBasicRow.defaultProps = {
-    status: undefined,
+    inputTag: TAG_INPUT,
     value: undefined,
     defaultValue: undefined,
     readOnly: false,
     disabled: false,
+    status: undefined,
     placeholder: 'Unset',
     onChange: function onChange() {},
     onFocus: function onFocus() {},
