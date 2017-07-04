@@ -355,6 +355,10 @@ textarea.gyp-editable-basic-row__input {
   color: rgba(0, 0, 0, 0.3);
 }
 
+.gyp-editable-basic-row ::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .gyp-editable-basic-row :-ms-input-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
@@ -1099,6 +1103,10 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-search-input ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-search-input ::-moz-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 
