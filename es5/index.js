@@ -3,11 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.BasicRow = undefined;
+exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.EditableBasicRow = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
 var _BasicRow2 = _interopRequireDefault(_BasicRow);
+
+var _EditableBasicRow = require('./EditableBasicRow');
+
+var _EditableBasicRow2 = _interopRequireDefault(_EditableBasicRow);
 
 var _Icon = require('./Icon');
 
@@ -96,6 +100,7 @@ var _InfiniteScroll2 = _interopRequireDefault(_InfiniteScroll);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.BasicRow = _BasicRow2.default;
+exports.EditableBasicRow = _EditableBasicRow2.default;
 exports.Icon = _Icon2.default;
 exports.StatusIcon = _StatusIcon2.default;
 exports.Tag = _Tag2.default;

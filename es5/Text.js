@@ -95,7 +95,12 @@ var Text = function (_PureComponent) {
                 tag = _props.tag,
                 statusIcon = _props.statusIcon;
 
-            var basicRowProps = { basic: basic, tag: tag, statusIcon: statusIcon };
+            var basicRowProps = {
+                basic: basic,
+                tag: tag,
+                statusIcon: statusIcon,
+                className: (0, _classnames2.default)(BEM.row.toString(), BEM.basic.toString())
+            };
 
             if (basicRow && _react2.default.isValidElement(basicRow)) {
                 return _react2.default.cloneElement(basicRow, basicRowProps);
@@ -156,8 +161,7 @@ Text.propTypes = (0, _extends3.default)({
 Text.defaultProps = (0, _extends3.default)({
     align: LEFT,
     aside: undefined,
-    basicRow: _react2.default.createElement(_BasicRow2.default, {
-        className: (0, _classnames2.default)(BEM.row.toString(), BEM.basic.toString()) }),
+    basicRow: _react2.default.createElement(_BasicRow2.default, null),
     noGrow: false,
     errorMsg: undefined,
     statusIcon: undefined

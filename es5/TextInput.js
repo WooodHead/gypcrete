@@ -45,55 +45,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var COMPONENT_NAME = exports.COMPONENT_NAME = (0, _prefixClass2.default)('text-input');
 
-var filterOutStatusProps = function filterOutStatusProps(props) {
-    var statusIcon = props.statusIcon,
-        errorMsg = props.errorMsg,
-        filteredProps = (0, _objectWithoutProperties3.default)(props, ['statusIcon', 'errorMsg']);
-
-
-    return filteredProps;
-};
-
 function TextInput(props, _ref) {
     var align = _ref.align;
-    var onEditEnd = props.onEditEnd,
-        value = props.value,
-        defaultValue = props.defaultValue,
-        placeholder = props.placeholder,
-        disabled = props.disabled,
-        onFocus = props.onFocus,
-        onBlur = props.onBlur,
-        onChange = props.onChange,
-        onKeyDown = props.onKeyDown,
-        input = props.input,
+    var wrapperProps = props.wrapperProps,
         className = props.className,
-        otherProps = (0, _objectWithoutProperties3.default)(props, ['onEditEnd', 'value', 'defaultValue', 'placeholder', 'disabled', 'onFocus', 'onBlur', 'onChange', 'onKeyDown', 'input', 'className']);
+        children = props.children,
+        editableTextProps = (0, _objectWithoutProperties3.default)(props, ['wrapperProps', 'className', 'children']);
 
-
-    var editableTextProps = {
-        value: value,
-        defaultValue: defaultValue,
-        placeholder: placeholder,
-        disabled: disabled,
-        onFocus: onFocus,
-        onBlur: onBlur,
-        onChange: onChange,
-        input: input
-    };
 
     var rootClassName = (0, _classnames2.default)(className, COMPONENT_NAME);
     var textLayoutProps = (0, _rowComp.getTextLayoutProps)(align, false);
 
     return _react2.default.createElement(
         'div',
-        (0, _extends3.default)({ className: rootClassName }, otherProps),
-        _react2.default.createElement(_EditableText2.default, (0, _extends3.default)({}, editableTextProps, textLayoutProps))
+        (0, _extends3.default)({ className: rootClassName }, wrapperProps),
+        _react2.default.createElement(_EditableText2.default, (0, _extends3.default)({}, textLayoutProps, editableTextProps))
     );
 }
 
-TextInput.propTypes = filterOutStatusProps(_EditableText.PureEditableText.propTypes);
+TextInput.propTypes = {
+    wrapperProps: _propTypes2.default.object };
 
-TextInput.defaultProps = filterOutStatusProps(_EditableText.PureEditableText.defaultProps);
+TextInput.defaultProps = {
+    wrapperProps: {}
+};
 
 TextInput.contextTypes = {
     align: _propTypes2.default.oneOf((0, _values2.default)(_rowComp.ROW_COMP_ALIGN))

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.withStatusPropTypes = exports.statusPropTypes = undefined;
+exports.withStatusPropTypes = exports.statusPropTypes = exports.STATUS_CODE = undefined;
 
 var _extends2 = require('babel-runtime/helpers/extends');
 
@@ -55,6 +55,7 @@ var _StatusIcon2 = _interopRequireDefault(_StatusIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+exports.STATUS_CODE = _StatusIcon.STATUS_CODE;
 var statusPropTypes = exports.statusPropTypes = {
     status: _propTypes2.default.oneOf((0, _values2.default)(_StatusIcon.STATUS_CODE)),
     statusOptions: _propTypes2.default.object,
@@ -62,8 +63,9 @@ var statusPropTypes = exports.statusPropTypes = {
 };
 
 var withStatusPropTypes = exports.withStatusPropTypes = {
+    status: statusPropTypes.status,
     statusIcon: _propTypes2.default.node,
-    errorMsg: _propTypes2.default.string
+    errorMsg: statusPropTypes.errorMsg
 };
 
 var withStatus = function withStatus() {
@@ -71,7 +73,9 @@ var withStatus = function withStatus() {
 
     var _ref$withRef = _ref.withRef,
         withRef = _ref$withRef === undefined ? false : _ref$withRef,
-        defaultStatusOptions = (0, _objectWithoutProperties3.default)(_ref, ['withRef']);
+        _ref$withRawStatus = _ref.withRawStatus,
+        withRawStatus = _ref$withRawStatus === undefined ? false : _ref$withRawStatus,
+        defaultStatusOptions = (0, _objectWithoutProperties3.default)(_ref, ['withRef', 'withRawStatus']);
     return function (WrappedComponent) {
         var componentName = (0, _getComponentName2.default)(WrappedComponent);
 
@@ -87,6 +91,17 @@ var withStatus = function withStatus() {
                 key: 'getRenderedComponent',
                 value: function getRenderedComponent() {
                     return this.renderedComponentRef;
+                }
+            }, {
+                key: 'getOptionalProps',
+                value: function getOptionalProps() {
+                    var props = {};
+
+                    if (withRawStatus) {
+                        props.status = this.context.status;
+                    }
+
+                    return props;
                 }
             }, {
                 key: 'render',
@@ -109,8 +124,9 @@ var withStatus = function withStatus() {
                             _this2.renderedComponentRef = _ref2;
                         }
                     };
+                    var optionalProps = this.getOptionalProps();
 
-                    return _react2.default.createElement(WrappedComponent, (0, _extends3.default)({}, refProps, this.props, {
+                    return _react2.default.createElement(WrappedComponent, (0, _extends3.default)({}, refProps, this.props, optionalProps, {
                         statusIcon: statusIcon,
                         errorMsg: errorMsg }));
                 }

@@ -312,6 +312,72 @@ body {
 .gyp-state-highlight .gyp-state-error .gyp-tag {
   color: #e63917;
 }
+.gyp-editable-basic-row {
+  position: relative;
+}
+
+.gyp-editable-basic-row__basic-label {
+  color: #3399ff;
+  opacity: 1;
+  will-change: opacity;
+}
+
+.gyp-editable-basic-row__input {
+  width: 100%;
+  height: 100%;
+  background: none;
+  color: #3399ff;
+  font: inherit;
+  border: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  z-index: 6;
+  cursor: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: opacity;
+  outline: none;
+}
+
+.gyp-editable-basic-row__input:focus {
+  opacity: 1;
+  box-shadow: 0 1px 0 #3399ff, 0 -1px 0 #3399ff inset;
+}
+
+.gyp-editable-basic-row ::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-basic-row :-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-basic-row ::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-basic-row--empty .gyp-editable-basic-row__basic-label {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.gyp-editable-basic-row--focused .gyp-editable-basic-row__basic-label,
+.gyp-editable-basic-row--disabled .gyp-editable-basic-row__basic-label {
+  opacity: 0;
+}
+
+.gyp-text--center .gyp-editable-basic-row__input {
+  text-align: center;
+}
+
+.gyp-text--right .gyp-editable-basic-row__input {
+  text-align: right;
+}
+
+.gyp-state-error .gyp-editable-basic-row__basic-label {
+  color: inherit;
+}
 @charset "UTF-8";
 @font-face {
   font-family: "gyp-icon";
@@ -685,7 +751,6 @@ body {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  overflow: hidden;
 }
 
 .gyp-text__basic {
@@ -715,85 +780,6 @@ body {
   -webkit-box-direction: reverse;
       -ms-flex-direction: row-reverse;
           flex-direction: row-reverse;
-}
-.gyp-editable-text {
-  cursor: pointer;
-}
-
-.gyp-editable-text__basic-label {
-  color: #3399ff;
-}
-
-.gyp-editable-text__basic-row {
-  position: relative;
-}
-
-.gyp-editable-text__input {
-  width: 100%;
-  height: 100%;
-  background: none;
-  color: #3399ff;
-  font: inherit;
-  border: none;
-  margin: 0;
-  padding: 0;
-  opacity: 0;
-  z-index: 6;
-  cursor: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
-  will-change: opacity;
-}
-
-.gyp-editable-text ::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-editable-text ::-moz-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-editable-text :-ms-input-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-editable-text ::placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-editable-text--empty .gyp-editable-text__basic-label {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-editable-text--focused {
-  cursor: auto;
-}
-
-.gyp-editable-text--focused .gyp-editable-text__input {
-  opacity: 1;
-  outline: none;
-  cursor: text;
-}
-
-.gyp-editable-text--focused .gyp-editable-text__basic-row {
-  box-shadow: 0 2px 0 #3399ff;
-}
-
-.gyp-editable-text--focused .gyp-editable-text__basic-label {
-  opacity: 0;
-}
-
-.gyp-editable-text.gyp-text--center .gyp-editable-text__input {
-  text-align: center;
-}
-
-.gyp-editable-text.gyp-text--right .gyp-editable-text__input {
-  text-align: right;
-}
-
-.gyp-state-error .gyp-editable-text__basic-label {
-  color: inherit;
 }
 .gyp-tooltip {
   background-color: black;
@@ -1104,10 +1090,6 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 }
 
 .gyp-search-input ::-webkit-input-placeholder {
-  color: rgba(0, 0, 0, 0.3);
-}
-
-.gyp-search-input ::-moz-placeholder {
   color: rgba(0, 0, 0, 0.3);
 }
 

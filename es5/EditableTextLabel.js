@@ -40,6 +40,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _keycode = require('keycode');
+
+var _keycode2 = _interopRequireDefault(_keycode);
+
 var _rowComp = require('./mixins/rowComp');
 
 var _EditableText = require('./EditableText');
@@ -74,21 +78,31 @@ var EditableTextLabel = function (_PureComponent) {
 
         return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = EditableTextLabel.__proto__ || (0, _getPrototypeOf2.default)(EditableTextLabel)).call.apply(_ref, [this].concat(args))), _this), _this.handleDoubleClick = function () {
             _this.props.onEditRequest();
+        }, _this.handleInputBlur = function (event) {
+            _this.props.onEditEnd({
+                value: event.currentTarget.value,
+                event: event
+            });
+        }, _this.handleInputKeyDown = function (event) {
+            switch (event.keyCode) {
+                case (0, _keycode2.default)('Enter'):
+                    event.currentTarget.blur();
+                    break;
+                case (0, _keycode2.default)('Escape'):
+                    _this.props.onEditEnd({
+                        value: null,
+                        event: event
+                    });
+                    break;
+                default:
+                    break;
+            }
         }, _temp), (0, _possibleConstructorReturn3.default)(_this, _ret);
     }
 
     (0, _createClass3.default)(EditableTextLabel, [{
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            if (this.props.inEdit) {
-                this.editableTextRef.getRenderedComponent().focusInputNode();
-            }
-        }
-    }, {
         key: 'render',
         value: function render() {
-            var _this2 = this;
-
             var _props = this.props,
                 inEdit = _props.inEdit,
                 onEditRequest = _props.onEditRequest,
@@ -113,11 +127,12 @@ var EditableTextLabel = function (_PureComponent) {
                 labelProps,
                 icon && _react2.default.createElement(_Icon2.default, { type: icon }),
                 _react2.default.createElement(_EditableText2.default, (0, _extends3.default)({
-                    ref: function ref(_ref2) {
-                        _this2.editableTextRef = _ref2;
-                    },
                     defaultValue: basic,
-                    onEditEnd: onEditEnd
+                    onBlur: this.handleInputBlur,
+                    input: {
+                        autoFocus: true,
+                        onKeyDown: this.handleInputKeyDown
+                    }
                 }, layoutProps))
             );
         }
@@ -128,8 +143,7 @@ var EditableTextLabel = function (_PureComponent) {
 EditableTextLabel.propTypes = {
     inEdit: _propTypes2.default.bool,
     onEditRequest: _propTypes2.default.func,
-
-    onEditEnd: _EditableText.PureEditableText.propTypes.onEditEnd,
+    onEditEnd: _propTypes2.default.func,
 
     icon: _TextLabel2.default.propTypes.icon,
     basic: _TextLabel2.default.propTypes.basic,
@@ -139,7 +153,8 @@ EditableTextLabel.propTypes = {
 EditableTextLabel.defaultProps = {
     inEdit: false,
     onEditRequest: function onEditRequest() {},
-    onEditEnd: _EditableText.PureEditableText.defaultProps.onEditEnd,
+    onEditEnd: function onEditEnd() {},
+
     icon: _TextLabel2.default.defaultProps.icon,
     basic: _TextLabel2.default.defaultProps.basic,
     align: _TextLabel2.default.defaultProps.align,
