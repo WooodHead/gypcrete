@@ -453,6 +453,10 @@ textarea.gyp-editable-basic-row__input {
   color: #e63917;
 }
 
+.gyp-icon-row-padding {
+  width: 0.5rem;
+}
+
 /* Direct copy from fontello */
 /* stylelint-disable rule-empty-line-before */
 .gyp-icon-add:before {
@@ -1170,4 +1174,96 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+.gyp-header-row {
+  min-height: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gyp-header-row__left, .gyp-header-row__right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 3 2rem;
+          flex: 1 3 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gyp-header-row__right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.gyp-header-row__center {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+}
+.gyp-list {
+  padding: 0.5rem 0;
+}
+
+.gyp-list__body {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gyp-list__title, .gyp-list__desc {
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+}
+
+.gyp-list__title {
+  padding: 0.75rem 0 0.25rem;
+}
+
+.gyp-list__desc {
+  padding-top: 0.5rem;
+  margin-right: 1rem;
+}
+
+.gyp-list--normal .gyp-list__title {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.gyp-list--normal .gyp-list__title,
+.gyp-list--normal .gyp-list__desc {
+  margin-left: 1rem;
+}
+
+.gyp-list--setting .gyp-list__body {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.gyp-list--setting .gyp-list__title,
+.gyp-list--setting .gyp-list__desc {
+  margin-left: 0.5rem;
+}
+.gyp-list-row {
+  padding-left: 16px;
+}
+
+.gyp-list-row__body {
+  min-height: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.gyp-list--setting li:last-of-type > .gyp-list-row__body {
+  border-bottom: none;
 }

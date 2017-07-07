@@ -26,7 +26,7 @@ function TextEllipsis(_ref) {
 
     return _react2.default.createElement(
         'div',
-        { className: ROOT_BEM },
+        { className: ROOT_BEM, title: children },
         children
     );
 }

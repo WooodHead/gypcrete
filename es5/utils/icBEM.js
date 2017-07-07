@@ -31,15 +31,13 @@ var ELEMENT_SEPARATOR = '__';
 var MODIFIER_SEPARATOR = '--';
 
 var BEMFactory = exports.BEMFactory = function () {
-    function BEMFactory() {
-        var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-            block = _ref.block,
+    function BEMFactory(_ref) {
+        var block = _ref.block,
             element = _ref.element,
             _ref$modifiers = _ref.modifiers,
             modifiers = _ref$modifiers === undefined ? [] : _ref$modifiers,
             _ref$nonBemClasses = _ref.nonBemClasses,
             nonBemClasses = _ref$nonBemClasses === undefined ? [] : _ref$nonBemClasses;
-
         (0, _classCallCheck3.default)(this, BEMFactory);
 
         if (!block) {
@@ -132,7 +130,7 @@ function icBEM(blockName) {
     if (typeof blockName === 'string') {
         return new BEMFactory({ block: blockName });
     }
-    throw new Error('blockName should be a non-valid String.');
+    throw new Error('blockName should be a non-empty String.');
 }
 
 exports.default = icBEM;
