@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ListRow = exports.List = exports.HeaderRow = exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.EditableBasicRow = exports.BasicRow = undefined;
+exports.ColumnView = exports.ListRow = exports.List = exports.HeaderRow = exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.EditableBasicRow = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -109,6 +109,10 @@ var _ListRow = require('./ListRow');
 
 var _ListRow2 = _interopRequireDefault(_ListRow);
 
+var _ColumnView = require('./ColumnView');
+
+var _ColumnView2 = _interopRequireDefault(_ColumnView);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.BasicRow = _BasicRow2.default;
@@ -137,3 +141,4 @@ exports.InfiniteScroll = _InfiniteScroll2.default;
 exports.HeaderRow = _HeaderRow2.default;
 exports.List = _List2.default;
 exports.ListRow = _ListRow2.default;
+exports.ColumnView = _ColumnView2.default;
