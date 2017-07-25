@@ -279,6 +279,10 @@ body {
   font-size: 1rem;
   font-weight: 400;
 }
+
+body.gyp-has-overlay {
+  overflow: hidden !important;
+}
 .gyp-flex-cell {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -877,6 +881,71 @@ input:checked ~ .gyp-switch-icon .gyp-switch-icon__inner:before,
 input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   -webkit-transform: translateX(1.5rem);
           transform: translateX(1.5rem);
+}
+.gyp-overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+  opacity: 0;
+  -webkit-animation: anim-fade-in .3s forwards;
+          animation: anim-fade-in .3s forwards;
+}
+.gyp-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  z-index: 1000;
+}
+
+.gyp-popup__container {
+  width: 95%;
+  max-width: 300px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  z-index: 9;
+  -webkit-transition: width .15s;
+  transition: width .15s;
+  opacity: 0;
+  -webkit-animation: anim-bounce-in .6s forwards;
+          animation: anim-bounce-in .6s forwards;
+}
+
+.gyp-popup__body {
+  padding: 8px 16px 32px;
+}
+
+.gyp-popup__message {
+  line-height: 1.3em;
+}
+
+.gyp-popup__buttons-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.gyp-popup__button {
+  border-top: 1px solid #ebe6e6;
 }
 .gyp-iconlayout {
   position: relative;

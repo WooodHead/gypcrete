@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.ColumnView = exports.ListRow = exports.List = exports.HeaderRow = exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.EditableBasicRow = exports.BasicRow = undefined;
+exports.ColumnView = exports.ListRow = exports.List = exports.HeaderRow = exports.InfiniteScroll = exports.SearchInput = exports.TextInput = exports.Switch = exports.IconCheckbox = exports.Checkbox = exports.IconButton = exports.Button = exports.EditableTextLabel = exports.TextLabel = exports.TextEllipsis = exports.IconLayout = exports.FlexCell = exports.Popup = exports.Overlay = exports.SwitchIcon = exports.AnchoredTooltip = exports.Tooltip = exports.EditableText = exports.Text = exports.Tag = exports.StatusIcon = exports.Icon = exports.EditableBasicRow = exports.BasicRow = undefined;
 
 var _BasicRow = require('./BasicRow');
 
@@ -44,6 +44,14 @@ var _AnchoredTooltip2 = _interopRequireDefault(_AnchoredTooltip);
 var _SwitchIcon = require('./SwitchIcon');
 
 var _SwitchIcon2 = _interopRequireDefault(_SwitchIcon);
+
+var _Overlay = require('./Overlay');
+
+var _Overlay2 = _interopRequireDefault(_Overlay);
+
+var _Popup = require('./Popup');
+
+var _Popup2 = _interopRequireDefault(_Popup);
 
 var _FlexCell = require('./FlexCell');
 
@@ -125,6 +133,8 @@ exports.EditableText = _EditableText2.default;
 exports.Tooltip = _Tooltip2.default;
 exports.AnchoredTooltip = _AnchoredTooltip2.default;
 exports.SwitchIcon = _SwitchIcon2.default;
+exports.Overlay = _Overlay2.default;
+exports.Popup = _Popup2.default;
 exports.FlexCell = _FlexCell2.default;
 exports.IconLayout = _IconLayout2.default;
 exports.TextEllipsis = _TextEllipsis2.default;
