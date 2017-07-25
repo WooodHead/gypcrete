@@ -277,6 +277,7 @@ html {
 
 body {
   font-size: 1rem;
+  font-weight: 400;
 }
 .gyp-flex-cell {
   -webkit-box-flex: 0;
@@ -977,6 +978,10 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
   color: black;
 }
 
+.gyp-button--primary {
+  font-weight: 600;
+}
+
 .gyp-button--solid {
   color: white;
   border-radius: 0.25rem;
@@ -1269,6 +1274,11 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
 
 .gyp-list--setting li:last-of-type > .gyp-list-row__body {
   border-bottom: none;
+}
+
+.gyp-list-row--highlight {
+  background-color: #3399ff;
+  color: white;
 }
 .gyp-column-view {
   width: 100%;

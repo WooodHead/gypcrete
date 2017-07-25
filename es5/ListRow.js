@@ -74,13 +74,14 @@ var ListRow = function (_PureComponent) {
         key: 'render',
         value: function render() {
             var _props = this.props,
+                highlight = _props.highlight,
                 nestedList = _props.nestedList,
                 className = _props.className,
                 children = _props.children,
-                wrapperProps = (0, _objectWithoutProperties3.default)(_props, ['nestedList', 'className', 'children']);
+                wrapperProps = (0, _objectWithoutProperties3.default)(_props, ['highlight', 'nestedList', 'className', 'children']);
 
 
-            var bemClass = BEM.root;
+            var bemClass = BEM.root.modifier('highlight', highlight);
             var rootClassName = (0, _classnames2.default)(bemClass.toString(), className);
 
             return _react2.default.createElement(
@@ -99,9 +100,11 @@ var ListRow = function (_PureComponent) {
 }(_react.PureComponent);
 
 ListRow.propTypes = {
+    highlight: _propTypes2.default.bool,
     nestedList: _propTypes2.default.node
 };
 ListRow.defaultProps = {
+    highlight: false,
     nestedList: undefined
 };
 exports.default = ListRow;

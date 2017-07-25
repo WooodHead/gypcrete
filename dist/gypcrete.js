@@ -6184,11 +6184,12 @@ var BUTTON_COLOR = { BLUE: BLUE, RED: RED, WHITE: WHITE, BLACK: BLACK };
 function Button(_ref) {
     var color = _ref.color,
         solid = _ref.solid,
+        primary = _ref.primary,
         className = _ref.className,
         children = _ref.children,
-        otherProps = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_objectWithoutProperties___default()(_ref, ['color', 'solid', 'className', 'children']);
+        otherProps = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_objectWithoutProperties___default()(_ref, ['color', 'solid', 'primary', 'className', 'children']);
 
-    var bemClass = ROOT_BEM.modifier(color).modifier('solid', solid);
+    var bemClass = ROOT_BEM.modifier(color).modifier('solid', solid).modifier('primary', primary);
 
     var rootClassName = __WEBPACK_IMPORTED_MODULE_5_classnames___default()(className, '' + bemClass);
 
@@ -6201,12 +6202,14 @@ function Button(_ref) {
 
 Button.propTypes = {
     color: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(BUTTON_COLOR)),
-    solid: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.bool
+    solid: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.bool,
+    primary: __WEBPACK_IMPORTED_MODULE_4_prop_types___default.a.bool
 };
 
 Button.defaultProps = {
     color: BLUE,
-    solid: false
+    solid: false,
+    primary: false
 };
 
 
@@ -13590,12 +13593,13 @@ var ListRow = function (_PureComponent) {
         key: 'render',
         value: function render() {
             var _props = this.props,
+                highlight = _props.highlight,
                 nestedList = _props.nestedList,
                 className = _props.className,
                 children = _props.children,
-                wrapperProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['nestedList', 'className', 'children']);
+                wrapperProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['highlight', 'nestedList', 'className', 'children']);
 
-            var bemClass = BEM.root;
+            var bemClass = BEM.root.modifier('highlight', highlight);
             var rootClassName = __WEBPACK_IMPORTED_MODULE_9_classnames___default()(bemClass.toString(), className);
 
             return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
@@ -13615,9 +13619,11 @@ var ListRow = function (_PureComponent) {
 }(__WEBPACK_IMPORTED_MODULE_7_react__["PureComponent"]);
 
 ListRow.propTypes = {
+    highlight: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.bool,
     nestedList: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.node
 };
 ListRow.defaultProps = {
+    highlight: false,
     nestedList: undefined
 };
 

@@ -55,11 +55,12 @@ var BUTTON_COLOR = exports.BUTTON_COLOR = { BLUE: BLUE, RED: RED, WHITE: WHITE, 
 function Button(_ref) {
     var color = _ref.color,
         solid = _ref.solid,
+        primary = _ref.primary,
         className = _ref.className,
         children = _ref.children,
-        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['color', 'solid', 'className', 'children']);
+        otherProps = (0, _objectWithoutProperties3.default)(_ref, ['color', 'solid', 'primary', 'className', 'children']);
 
-    var bemClass = ROOT_BEM.modifier(color).modifier('solid', solid);
+    var bemClass = ROOT_BEM.modifier(color).modifier('solid', solid).modifier('primary', primary);
 
     var rootClassName = (0, _classnames2.default)(className, '' + bemClass);
 
@@ -72,12 +73,14 @@ function Button(_ref) {
 
 Button.propTypes = {
     color: _propTypes2.default.oneOf((0, _values2.default)(BUTTON_COLOR)),
-    solid: _propTypes2.default.bool
+    solid: _propTypes2.default.bool,
+    primary: _propTypes2.default.bool
 };
 
 Button.defaultProps = {
     color: BLUE,
-    solid: false
+    solid: false,
+    primary: false
 };
 
 exports.PureButton = Button;
