@@ -130,7 +130,7 @@ var EditableTextLabel = function (_PureComponent) {
                     defaultValue: basic,
                     onBlur: this.handleInputBlur,
                     input: {
-                        autoFocus: true,
+                        autoFocus: inEdit,
                         onKeyDown: this.handleInputKeyDown
                     }
                 }, layoutProps))
