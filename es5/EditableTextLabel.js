@@ -46,6 +46,10 @@ var _keycode2 = _interopRequireDefault(_keycode);
 
 var _rowComp = require('./mixins/rowComp');
 
+var _wrapIfNotElement = require('./utils/wrapIfNotElement');
+
+var _wrapIfNotElement2 = _interopRequireDefault(_wrapIfNotElement);
+
 var _EditableText = require('./EditableText');
 
 var _EditableText2 = _interopRequireDefault(_EditableText);
@@ -62,6 +66,8 @@ var _StatusIcon = require('./StatusIcon');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var TOUCH_TIMEOUT_MS = 250;
+
 var EditableTextLabel = function (_PureComponent) {
     (0, _inherits3.default)(EditableTextLabel, _PureComponent);
 
@@ -76,9 +82,40 @@ var EditableTextLabel = function (_PureComponent) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = EditableTextLabel.__proto__ || (0, _getPrototypeOf2.default)(EditableTextLabel)).call.apply(_ref, [this].concat(args))), _this), _this.handleDoubleClick = function () {
-            _this.props.onEditRequest();
+        return _ret = (_temp = (_this = (0, _possibleConstructorReturn3.default)(this, (_ref = EditableTextLabel.__proto__ || (0, _getPrototypeOf2.default)(EditableTextLabel)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            inEdit: _this.props.inEdit || false,
+
+            touchCount: 0,
+            dblTouchTimeout: null
+        }, _this.resetDblTouchSimulation = function () {
+            _this.setState({
+                touchCount: 0,
+                dblTouchTimeout: null
+            });
+        }, _this.handleDoubleClick = function (event) {
+            if (!_this.getEditabilityControlled()) {
+                _this.setState({ inEdit: true });
+            }
+
+            _this.props.onDblClick(event);
+        }, _this.handleTouchStart = function (event) {
+            var currentCount = _this.state.touchCount + 1;
+
+            if (currentCount === 2) {
+                _this.handleDoubleClick(event);
+                _this.resetDblTouchSimulation();
+                return;
+            }
+
+            global.clearTimeout(_this.state.dblTouchTimeout);
+            var resetTimeout = global.setTimeout(_this.resetDblTouchSimulation, TOUCH_TIMEOUT_MS);
+
+            _this.setState({
+                touchCount: currentCount,
+                dblTouchTimeout: resetTimeout
+            });
         }, _this.handleInputBlur = function (event) {
+            _this.leaveEditModeIfNotControlled();
             _this.props.onEditEnd({
                 value: event.currentTarget.value,
                 event: event
@@ -89,6 +126,7 @@ var EditableTextLabel = function (_PureComponent) {
                     event.currentTarget.blur();
                     break;
                 case (0, _keycode2.default)('Escape'):
+                    _this.leaveEditModeIfNotControlled();
                     _this.props.onEditEnd({
                         value: null,
                         event: event
@@ -101,36 +139,59 @@ var EditableTextLabel = function (_PureComponent) {
     }
 
     (0, _createClass3.default)(EditableTextLabel, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            if (this.getEditabilityControlled(nextProps)) {
+                this.setState({ inEdit: nextProps.inEdit });
+            }
+        }
+    }, {
+        key: 'getEditabilityControlled',
+        value: function getEditabilityControlled() {
+            var fromProps = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.props;
+
+            return fromProps.inEdit !== undefined;
+        }
+    }, {
+        key: 'leaveEditModeIfNotControlled',
+        value: function leaveEditModeIfNotControlled() {
+            if (!this.getEditabilityControlled(this.props)) {
+                this.setState({ inEdit: false });
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             var _props = this.props,
                 inEdit = _props.inEdit,
-                onEditRequest = _props.onEditRequest,
+                onDblClick = _props.onDblClick,
                 onEditEnd = _props.onEditEnd,
-                labelProps = (0, _objectWithoutProperties3.default)(_props, ['inEdit', 'onEditRequest', 'onEditEnd']);
+                labelProps = (0, _objectWithoutProperties3.default)(_props, ['inEdit', 'onDblClick', 'onEditEnd']);
             var icon = labelProps.icon,
                 basic = labelProps.basic,
                 align = labelProps.align,
                 status = labelProps.status;
 
 
-            if (!inEdit && status !== _StatusIcon.STATUS_CODE.LOADING) {
+            if (!this.state.inEdit && status !== _StatusIcon.STATUS_CODE.LOADING) {
                 return _react2.default.createElement(_TextLabel2.default, (0, _extends3.default)({
-                    onDoubleClick: this.handleDoubleClick
+                    onDoubleClick: this.handleDoubleClick,
+                    onTouchStart: this.handleTouchStart
                 }, labelProps));
             }
 
             var layoutProps = (0, _rowComp.getTextLayoutProps)(align, !!icon);
+            var labelIcon = icon && (0, _wrapIfNotElement2.default)(icon, { with: _Icon2.default, via: 'type' });
 
             return _react2.default.createElement(
                 _TextLabel2.default,
                 labelProps,
-                icon && _react2.default.createElement(_Icon2.default, { type: icon }),
+                labelIcon,
                 _react2.default.createElement(_EditableText2.default, (0, _extends3.default)({
                     defaultValue: basic,
                     onBlur: this.handleInputBlur,
                     input: {
-                        autoFocus: inEdit,
+                        autoFocus: this.state.inEdit,
                         onKeyDown: this.handleInputKeyDown
                     }
                 }, layoutProps))
@@ -142,8 +203,8 @@ var EditableTextLabel = function (_PureComponent) {
 
 EditableTextLabel.propTypes = {
     inEdit: _propTypes2.default.bool,
-    onEditRequest: _propTypes2.default.func,
     onEditEnd: _propTypes2.default.func,
+    onDblClick: _propTypes2.default.func,
 
     icon: _TextLabel2.default.propTypes.icon,
     basic: _TextLabel2.default.propTypes.basic,
@@ -151,9 +212,9 @@ EditableTextLabel.propTypes = {
     status: _TextLabel2.default.propTypes.status
 };
 EditableTextLabel.defaultProps = {
-    inEdit: false,
-    onEditRequest: function onEditRequest() {},
+    inEdit: undefined,
     onEditEnd: function onEditEnd() {},
+    onDblClick: function onDblClick() {},
 
     icon: _TextLabel2.default.defaultProps.icon,
     basic: _TextLabel2.default.defaultProps.basic,
