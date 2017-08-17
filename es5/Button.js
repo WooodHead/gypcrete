@@ -65,8 +65,8 @@ function Button(_ref) {
     var rootClassName = (0, _classnames2.default)(className, '' + bemClass);
 
     return _react2.default.createElement(
-        'button',
-        (0, _extends3.default)({ type: 'button', className: rootClassName }, otherProps),
+        'div',
+        (0, _extends3.default)({ className: rootClassName }, otherProps),
         children
     );
 }

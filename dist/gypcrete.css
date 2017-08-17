@@ -277,6 +277,7 @@ html {
 
 body {
   font-size: 1rem;
+  font-family: sans-serif;
   font-weight: 400;
 }
 
@@ -1020,21 +1021,11 @@ input:checked ~ .gyp-iconlayout .gyp-switch-icon__inner:before {
           flex: 0 0 auto;
 }
 .gyp-button {
-  color: inherit;
-  background: transparent;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  outline: 0;
-  text-align: inherit;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 

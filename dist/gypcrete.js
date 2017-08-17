@@ -6194,8 +6194,8 @@ function Button(_ref) {
     var rootClassName = __WEBPACK_IMPORTED_MODULE_5_classnames___default()(className, '' + bemClass);
 
     return __WEBPACK_IMPORTED_MODULE_3_react___default.a.createElement(
-        'button',
-        __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({ type: 'button', className: rootClassName }, otherProps),
+        'div',
+        __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({ className: rootClassName }, otherProps),
         children
     );
 }
