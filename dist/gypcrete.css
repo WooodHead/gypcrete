@@ -794,9 +794,11 @@ textarea.gyp-editable-basic-row__input {
 .gyp-text__basic {
   font-size: inherit;
   line-height: inherit;
+  font-weight: 600;
 }
 
 .gyp-text__aside {
+  color: #4d4d4d;
   font-size: 0.75rem;
   line-height: 0.875rem;
 }

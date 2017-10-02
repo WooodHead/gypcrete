@@ -166,15 +166,16 @@ var EditableTextLabel = function (_PureComponent) {
                 inEdit = _props.inEdit,
                 onDblClick = _props.onDblClick,
                 onEditEnd = _props.onEditEnd,
-                labelProps = (0, _objectWithoutProperties3.default)(_props, ['inEdit', 'onDblClick', 'onEditEnd']);
+                status = _props.status,
+                labelProps = (0, _objectWithoutProperties3.default)(_props, ['inEdit', 'onDblClick', 'onEditEnd', 'status']);
             var icon = labelProps.icon,
                 basic = labelProps.basic,
-                align = labelProps.align,
-                status = labelProps.status;
+                align = labelProps.align;
 
 
             if (!this.state.inEdit && status !== _StatusIcon.STATUS_CODE.LOADING) {
                 return _react2.default.createElement(_TextLabel2.default, (0, _extends3.default)({
+                    status: status,
                     onDoubleClick: this.handleDoubleClick,
                     onTouchStart: this.handleTouchStart
                 }, labelProps));
@@ -189,11 +190,9 @@ var EditableTextLabel = function (_PureComponent) {
                 labelIcon,
                 _react2.default.createElement(_EditableText2.default, (0, _extends3.default)({
                     defaultValue: basic,
+                    autoFocus: this.state.inEdit,
                     onBlur: this.handleInputBlur,
-                    input: {
-                        autoFocus: this.state.inEdit,
-                        onKeyDown: this.handleInputKeyDown
-                    }
+                    onKeyDown: this.handleInputKeyDown
                 }, layoutProps))
             );
         }

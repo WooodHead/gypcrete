@@ -129,18 +129,18 @@ var EditableBasicRow = function (_PureComponent) {
 
             var _props = this.props,
                 InputTag = _props.inputTag,
-                value = _props.value,
-                defaultValue = _props.defaultValue,
+                placeholder = _props.placeholder,
                 readOnly = _props.readOnly,
                 disabled = _props.disabled,
-                status = _props.status,
-                placeholder = _props.placeholder,
                 onChange = _props.onChange,
                 onFocus = _props.onFocus,
                 onBlur = _props.onBlur,
-                inputProps = _props.input,
+                status = _props.status,
+                statusIcon = _props.statusIcon,
                 className = _props.className,
-                rowProps = (0, _objectWithoutProperties3.default)(_props, ['inputTag', 'value', 'defaultValue', 'readOnly', 'disabled', 'status', 'placeholder', 'onChange', 'onFocus', 'onBlur', 'input', 'className']);
+                basic = _props.basic,
+                tag = _props.tag,
+                inputProps = (0, _objectWithoutProperties3.default)(_props, ['inputTag', 'placeholder', 'readOnly', 'disabled', 'onChange', 'onFocus', 'onBlur', 'status', 'statusIcon', 'className', 'basic', 'tag']);
             var _state = this.state,
                 currentValue = _state.currentValue,
                 focused = _state.focused;
@@ -161,9 +161,10 @@ var EditableBasicRow = function (_PureComponent) {
 
             return _react2.default.createElement(
                 _BasicRow2.default,
-                (0, _extends3.default)({}, rowProps, {
+                {
+                    className: rootClassName,
                     basic: basicLabel,
-                    className: rootClassName }),
+                    statusIcon: statusIcon },
                 _react2.default.createElement(InputTag, (0, _extends3.default)({
                     ref: function ref(_ref2) {
                         _this2.inputNode = _ref2;
@@ -187,29 +188,30 @@ var EditableBasicRow = function (_PureComponent) {
 
 EditableBasicRow.propTypes = {
     inputTag: _propTypes2.default.oneOf((0, _values2.default)(ROW_INPUT_TAGS)),
+
     value: _propTypes2.default.string,
     defaultValue: _propTypes2.default.string,
+    placeholder: _propTypes2.default.string,
     readOnly: _propTypes2.default.bool,
     disabled: _propTypes2.default.bool,
-    status: _propTypes2.default.string,
-
-    placeholder: _propTypes2.default.string,
     onChange: _propTypes2.default.func,
     onFocus: _propTypes2.default.func,
     onBlur: _propTypes2.default.func,
 
-    input: _propTypes2.default.object };
+    status: _propTypes2.default.string,
+    statusIcon: _propTypes2.default.element
+};
 EditableBasicRow.defaultProps = {
     inputTag: TAG_INPUT,
     value: undefined,
     defaultValue: undefined,
+    placeholder: 'Unset',
     readOnly: false,
     disabled: false,
-    status: undefined,
-    placeholder: 'Unset',
     onChange: function onChange() {},
     onFocus: function onFocus() {},
     onBlur: function onBlur() {},
-    input: {}
+    status: undefined,
+    statusIcon: undefined
 };
 exports.default = EditableBasicRow;

@@ -2710,7 +2710,7 @@ var rowComp = function rowComp() {
         _ref$defaultMinified = _ref.defaultMinified,
         defaultMinified = _ref$defaultMinified === undefined ? false : _ref$defaultMinified,
         _ref$defaultAlign = _ref.defaultAlign,
-        defaultAlign = _ref$defaultAlign === undefined ? 'left' : _ref$defaultAlign;
+        defaultAlign = _ref$defaultAlign === undefined ? LEFT : _ref$defaultAlign;
 
     return function (WrappedComponent) {
         var componentName = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_13__utils_getComponentName__["a" /* default */])(WrappedComponent);
@@ -6320,6 +6320,7 @@ EditableText.propTypes = __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_exten
 
     align: __WEBPACK_IMPORTED_MODULE_11__Text__["b" /* PureText */].propTypes.align,
     noGrow: __WEBPACK_IMPORTED_MODULE_11__Text__["b" /* PureText */].propTypes.noGrow
+
 }, __WEBPACK_IMPORTED_MODULE_9__mixins_withStatus__["b" /* withStatusPropTypes */]);
 EditableText.defaultProps = {
     onFocus: function onFocus() {},
@@ -9061,6 +9062,7 @@ Checkbox.defaultProps = {
 
 
 
+
 var COMPONENT_NAME = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12__utils_prefixClass__["a" /* default */])('editable-basic-row');
 var ROOT_BEM = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_13__utils_icBEM__["a" /* default */])(COMPONENT_NAME);
 
@@ -9127,18 +9129,18 @@ var EditableBasicRow = function (_PureComponent) {
 
             var _props = this.props,
                 InputTag = _props.inputTag,
-                value = _props.value,
-                defaultValue = _props.defaultValue,
+                placeholder = _props.placeholder,
                 readOnly = _props.readOnly,
                 disabled = _props.disabled,
-                status = _props.status,
-                placeholder = _props.placeholder,
                 onChange = _props.onChange,
                 onFocus = _props.onFocus,
                 onBlur = _props.onBlur,
-                inputProps = _props.input,
+                status = _props.status,
+                statusIcon = _props.statusIcon,
                 className = _props.className,
-                rowProps = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['inputTag', 'value', 'defaultValue', 'readOnly', 'disabled', 'status', 'placeholder', 'onChange', 'onFocus', 'onBlur', 'input', 'className']);
+                basic = _props.basic,
+                tag = _props.tag,
+                inputProps = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['inputTag', 'placeholder', 'readOnly', 'disabled', 'onChange', 'onFocus', 'onBlur', 'status', 'statusIcon', 'className', 'basic', 'tag']);
 
             var _state = this.state,
                 currentValue = _state.currentValue,
@@ -9160,9 +9162,10 @@ var EditableBasicRow = function (_PureComponent) {
 
             return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_14__BasicRow__["a" /* default */],
-                __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({}, rowProps, {
+                {
+                    className: rootClassName,
                     basic: basicLabel,
-                    className: rootClassName }),
+                    statusIcon: statusIcon },
                 __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(InputTag, __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()({
                     ref: function ref(_ref2) {
                         _this2.inputNode = _ref2;
@@ -9187,30 +9190,31 @@ var EditableBasicRow = function (_PureComponent) {
 
 EditableBasicRow.propTypes = {
     inputTag: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.oneOf(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_values___default()(ROW_INPUT_TAGS)),
+
     value: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
     defaultValue: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
+    placeholder: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
     readOnly: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.bool,
     disabled: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.bool,
-    status: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
-
-    placeholder: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
     onChange: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.func,
     onFocus: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.func,
     onBlur: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.func,
 
-    input: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.object };
+    status: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.string,
+    statusIcon: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.element
+};
 EditableBasicRow.defaultProps = {
     inputTag: TAG_INPUT,
     value: undefined,
     defaultValue: undefined,
+    placeholder: 'Unset',
     readOnly: false,
     disabled: false,
-    status: undefined,
-    placeholder: 'Unset',
     onChange: function onChange() {},
     onFocus: function onFocus() {},
     onBlur: function onBlur() {},
-    input: {}
+    status: undefined,
+    statusIcon: undefined
 };
 
 
@@ -13308,16 +13312,17 @@ var EditableTextLabel = function (_PureComponent) {
                 inEdit = _props.inEdit,
                 onDblClick = _props.onDblClick,
                 onEditEnd = _props.onEditEnd,
-                labelProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['inEdit', 'onDblClick', 'onEditEnd']);
+                status = _props.status,
+                labelProps = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_objectWithoutProperties___default()(_props, ['inEdit', 'onDblClick', 'onEditEnd', 'status']);
 
             var icon = labelProps.icon,
                 basic = labelProps.basic,
-                align = labelProps.align,
-                status = labelProps.status;
+                align = labelProps.align;
 
 
             if (!this.state.inEdit && status !== __WEBPACK_IMPORTED_MODULE_15__StatusIcon__["b" /* STATUS_CODE */].LOADING) {
                 return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__TextLabel__["a" /* default */], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({
+                    status: status,
                     onDoubleClick: this.handleDoubleClick,
                     onTouchStart: this.handleTouchStart
                 }, labelProps));
@@ -13332,11 +13337,9 @@ var EditableTextLabel = function (_PureComponent) {
                 labelIcon,
                 __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__EditableText__["a" /* default */], __WEBPACK_IMPORTED_MODULE_0_babel_runtime_helpers_extends___default()({
                     defaultValue: basic,
+                    autoFocus: this.state.inEdit,
                     onBlur: this.handleInputBlur,
-                    input: {
-                        autoFocus: this.state.inEdit,
-                        onKeyDown: this.handleInputKeyDown
-                    }
+                    onKeyDown: this.handleInputKeyDown
                 }, layoutProps))
             );
         }

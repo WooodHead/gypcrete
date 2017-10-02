@@ -125,7 +125,7 @@ var rowComp = function rowComp() {
         _ref$defaultMinified = _ref.defaultMinified,
         defaultMinified = _ref$defaultMinified === undefined ? false : _ref$defaultMinified,
         _ref$defaultAlign = _ref.defaultAlign,
-        defaultAlign = _ref$defaultAlign === undefined ? 'left' : _ref$defaultAlign;
+        defaultAlign = _ref$defaultAlign === undefined ? LEFT : _ref$defaultAlign;
 
     return function (WrappedComponent) {
         var componentName = (0, _getComponentName2.default)(WrappedComponent);

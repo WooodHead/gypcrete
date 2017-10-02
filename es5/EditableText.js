@@ -114,6 +114,7 @@ EditableText.propTypes = (0, _extends3.default)({
 
     align: _Text.PureText.propTypes.align,
     noGrow: _Text.PureText.propTypes.noGrow
+
 }, _withStatus.withStatusPropTypes);
 EditableText.defaultProps = {
     onFocus: function onFocus() {},
