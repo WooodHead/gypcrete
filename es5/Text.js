@@ -133,10 +133,11 @@ var Text = function (_PureComponent) {
             var _props3 = this.props,
                 align = _props3.align,
                 noGrow = _props3.noGrow,
+                bold = _props3.bold,
                 className = _props3.className;
 
 
-            var bemClass = BEM.root.modifier(align).modifier('no-grow', noGrow);
+            var bemClass = BEM.root.modifier(align).modifier('no-grow', noGrow).modifier('bold', bold);
 
             var rootClassName = (0, _classnames2.default)(bemClass.toString(), className);
 
@@ -155,7 +156,8 @@ Text.propTypes = (0, _extends3.default)({
     align: _propTypes2.default.oneOf((0, _values2.default)(TEXT_ALIGN)),
     aside: _propTypes2.default.node,
     basicRow: _propTypes2.default.element,
-    noGrow: _propTypes2.default.bool
+    noGrow: _propTypes2.default.bool,
+    bold: _propTypes2.default.bool
 
 }, _withStatus.withStatusPropTypes, _BasicRow2.default.propTypes);
 Text.defaultProps = (0, _extends3.default)({
@@ -163,6 +165,7 @@ Text.defaultProps = (0, _extends3.default)({
     aside: undefined,
     basicRow: _react2.default.createElement(_BasicRow2.default, null),
     noGrow: false,
+    bold: false,
     errorMsg: undefined,
     statusIcon: undefined
 }, _BasicRow2.default.defaultProps);
