@@ -6,5 +6,8 @@
     },
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!@ichef/)"
+    ],
+    "setupFiles": [
+      "<rootDir>/configs/enzyme.setup.js"
     ]
 }
