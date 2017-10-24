@@ -11,6 +11,8 @@ env:
 settings:
     import/resolver:
         babel-module: {}
+    import/core-modules:
+        - "enzyme"
 
 parserOptions:
     sourceType: module
