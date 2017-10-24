@@ -46,7 +46,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
-    "enzyme": "^2.8.2",
     "sinon": "^4.0.1",
     "webpack": "^3.8.1"
   }
