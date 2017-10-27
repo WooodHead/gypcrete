@@ -45,10 +45,10 @@ describe('Pure <TextInputRow>', () => {
 
         wrapper.find('input').simulate('focus');
         expect(wrapper.state('focused')).toBeTruthy();
-        expect(wrapper.hasClass(focusedModifier)).toBeTruthy();
+        expect(wrapper.children().hasClass(focusedModifier)).toBeTruthy();
 
         wrapper.find('input').simulate('blur');
         expect(wrapper.state('focused')).toBeFalsy();
-        expect(wrapper.hasClass(focusedModifier)).toBeFalsy();
+        expect(wrapper.children().hasClass(focusedModifier)).toBeFalsy();
     });
 });

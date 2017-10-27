@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Icon from '../Icon';
 import StatusIcon from '../StatusIcon';
@@ -38,6 +38,7 @@ it('hides success icon after 2 secs', () => {
     expect(wrapper.find(Icon).prop('type')).toBe('inline-success');
 
     jest.runAllTimers();
+    wrapper.update();
 
     expect(wrapper.state('hideIcon')).toBeTruthy();
     expect(wrapper.find(Icon).exists()).toBeFalsy();
